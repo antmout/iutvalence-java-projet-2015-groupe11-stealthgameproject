@@ -52,10 +52,15 @@ public class Position
 	}
 
 	/** Move. */
-	public Position move(int x, int y)
+	public void move(int x, int y)
 	{
-
-		return null;
+		try
+		{
+			setPosition(this.x + x, this.y + y);
+		} catch (InvalidPositionException e)
+		{
+			// DO NOTHING!
+		}
 
 	}
 
@@ -63,12 +68,12 @@ public class Position
 	 * @throws InvalidPositionException */
 	private void setPosition(int x, int y) throws InvalidPositionException
 	{
-		if (this.x + x > Map.DEFAULT_MAP_WIDTH
-				|| this.x + x < 0
-				|| this.y + y > Map.DEFAULT_MAP_HEIGHT
-				|| this.y + y < 0)
+		if (x < 0 || y < 0)
 		{
 			throw new InvalidPositionException();
 		}
+		
+		this.x = x;
+		this.y = y;
 	}
 }
