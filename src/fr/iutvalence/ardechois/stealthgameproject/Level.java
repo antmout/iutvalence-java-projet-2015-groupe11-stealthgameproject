@@ -20,24 +20,24 @@ public class Level
     private Map currentMap;
 
     /** List of the current enemies. */
-    ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
+    private ArrayList<Enemy> enemyList;
 
     /** Current item of the level. */
     private Item currentItem;
 
     // Constructors
-
-    // Methods
+    
     /**
-     * Setter of the current map.
-     * 
-     * @param map
+     * Default constructor of the level.
      */
-    public void setCurrentMap(Map map)
+    public Level()
     {
-        this.currentMap = map;
-    }
+        currentMap = new Map();
+        currentItem = new Item();
+        enemyList = new ArrayList<Enemy>();
 
+    }
+    // Methods
     /**
      * Getter of the current map.
      * 
@@ -68,5 +68,4 @@ public class Level
     {
         this.currentItem = currentItem;
     }
-
 }
