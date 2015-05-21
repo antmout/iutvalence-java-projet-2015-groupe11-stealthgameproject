@@ -20,9 +20,9 @@ public class Level
     private Map currentMap;
 
     /** List of the current enemies. */
-    ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
-
-    /** Current item of the level. */
+    private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
+    
+     /** Current item of the level. */
     private Item currentItem;
 
     // Constructors
@@ -68,5 +68,4 @@ public class Level
     {
         this.currentItem = currentItem;
     }
-
 }
