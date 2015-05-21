@@ -46,6 +46,24 @@ public class Map
 	
 	//Methods
 	/**
+	 * Get the current map width.
+	 * @return map width
+	 */
+	public int getMapWidth()
+	{
+		return grid.length;
+	}
+	
+	/**
+	 * Get the current map height.
+	 * @return map height
+	 */
+	public int getMapHeight()
+	{
+		return grid[0].length;
+	}
+	
+	/**
 	 * Get a block that have the asked position.
 	 * 
 	 * @param position
