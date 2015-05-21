@@ -6,10 +6,11 @@ package fr.iutvalence.ardechois.stealthgameproject;
  * @author antoine
  * @version 0.1.0
  */
-public class GameLauncher {
+public class GameLauncher
+{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args)
+	{
 
 	}
 

@@ -1,5 +1,6 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
-public class Enemy {
+public class Enemy
+{
 
 }
