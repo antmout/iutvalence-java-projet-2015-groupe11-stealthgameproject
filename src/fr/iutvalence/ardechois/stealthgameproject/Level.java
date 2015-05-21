@@ -26,6 +26,7 @@ public class Level
     private Item currentItem;
 
     // Constructors
+    
     /**
      * Default constructor of the level.
      */
