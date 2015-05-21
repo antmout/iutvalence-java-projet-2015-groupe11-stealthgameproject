@@ -64,7 +64,7 @@ public class Position
 
 	}
 
-	/**
+	/** Setter for the Position
 	 * @throws InvalidPositionException */
 	private void setPosition(int x, int y) throws InvalidPositionException
 	{
