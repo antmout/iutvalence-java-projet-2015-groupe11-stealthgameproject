@@ -33,7 +33,7 @@ public class Level
     public Level()
     {
         currentMap = new Map();
-        currentItem = new Item();
+        currentItem = new Item(new Position(0, 0));
         enemyList = new ArrayList<Enemy>();
 
     }
