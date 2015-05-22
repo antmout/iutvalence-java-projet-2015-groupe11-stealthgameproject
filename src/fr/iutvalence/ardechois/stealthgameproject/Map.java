@@ -30,9 +30,9 @@ public class Map
 	private final Blocks[][] grid;
 	
 	/**
-	 * TODO javadoc
+	 * HashMap that contains link between String and Blocks.
 	 */
-	HashMap<String, Blocks> hashMap;
+	private HashMap<String, Blocks> hashMap;
 
 	// Constructors
 	/**
@@ -52,16 +52,19 @@ public class Map
 	public Map(int width, int height)
 	{
 		this.grid = new Blocks[width][height];
-		setMap();
+		setHashMap();
 		
 	}
 
 	// Methods
 	
 	/**
-	 * TODO javadoc
+	 * Set the HashMap with Blocks enumeration values.
+	 * 
+	 * @see Blocks
+	 * @see #hashMap
 	 */
-	private void setMap()
+	private void setHashMap()
 	{
 		this.hashMap = new HashMap<String, Blocks>();
 		for(Blocks block : Blocks.values())
