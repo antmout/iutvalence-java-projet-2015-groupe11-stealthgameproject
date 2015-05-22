@@ -1,6 +1,5 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
-import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
 /**
  * Position of an element.
@@ -54,25 +53,15 @@ public class Position
 	/** Move. */
 	public void move(int x, int y)
 	{
-		try
-		{
-			setPosition(this.x + x, this.y + y);
-		} catch (InvalidPositionException e)
-		{
-			// DO NOTHING!
-		}
-
+		setPosition(this.x + x, this.y + y);
 	}
 
-	/** Setter for the Position
-	 * @throws InvalidPositionException */
-	private void setPosition(int x, int y) throws InvalidPositionException
+	/**
+	 * Setter for the Position
+	 * 
+	 */
+	private void setPosition(int x, int y)
 	{
-		if (x < 0 || y < 0)
-		{
-			throw new InvalidPositionException();
-		}
-		
 		this.x = x;
 		this.y = y;
 	}
