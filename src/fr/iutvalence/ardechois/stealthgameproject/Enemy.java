@@ -11,9 +11,13 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionExce
  */
 public class Enemy
 {
-	/** The enemy position. */
+	/** The enemy position.
+	 * @see Position
+	 */
 	private Position position;
-	/** The enemy vision field. */
+	/** The enemy vision field. 
+	 *  @see VisionField
+	 */
 	private static VisionField visionField;
 
 	/**
@@ -33,7 +37,7 @@ public class Enemy
 	/**
 	 * Getter for the attribute position.
 	 * 
-	 * @return position : The current position of the enemy.
+	 * @return position : The current enemy position.
 	 */
 	public Position getPosition()
 	{
