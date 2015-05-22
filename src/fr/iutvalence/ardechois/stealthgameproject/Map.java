@@ -1,5 +1,7 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
+import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
+
 /**
  * Map on which the player will play.
  * 
@@ -18,13 +20,13 @@ public class Map
 	 * Default map height in <b>block</b>.
 	 */
 	public static final int DEFAULT_MAP_HEIGHT = 10;
-	
+
 	// Attributes
 	/**
 	 * Map grid.
 	 */
 	private final Block[][] grid;
-	
+
 	// Constructors
 	/**
 	 * Create a default map.
@@ -33,9 +35,10 @@ public class Map
 	{
 		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_WIDTH);
 	}
-	
+
 	/**
 	 * Create a map with given width and height.
+	 * 
 	 * @param width
 	 * @param height
 	 */
@@ -43,34 +46,42 @@ public class Map
 	{
 		this.grid = new Block[width][height];
 	}
-	
-	//Methods
+
+	// Methods
 	/**
 	 * Get the current map width.
+	 * 
 	 * @return map width
 	 */
 	public int getMapWidth()
 	{
 		return grid.length;
 	}
-	
+
 	/**
 	 * Get the current map height.
+	 * 
 	 * @return map height
 	 */
 	public int getMapHeight()
 	{
 		return grid[0].length;
 	}
-	
+
 	/**
 	 * Get a block that have the asked position.
 	 * 
 	 * @param position
 	 * @return block
+	 * @throws InvalidPositionException
 	 */
-	public Block getBlock(Position position)
+	public Block getBlock(Position position) throws InvalidPositionException
 	{
+		if (position.getX() < 0 || position.getY() < 0 || position.getX() > getMapWidth() || position.getY() > getMapHeight())
+		{
+			throw new InvalidPositionException();
+		}
+		
 		return grid[position.getX()][position.getY()];
 	}
 }
