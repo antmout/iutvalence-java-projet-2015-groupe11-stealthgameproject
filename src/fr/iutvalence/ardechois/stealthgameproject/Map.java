@@ -1,5 +1,7 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
+import java.util.HashMap;
+
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
 /**
@@ -25,7 +27,12 @@ public class Map
 	/**
 	 * Map grid.
 	 */
-	private final Block[][] grid;
+	private final Blocks[][] grid;
+	
+	/**
+	 * TODO javadoc
+	 */
+	HashMap<String, Blocks> hashMap;
 
 	// Constructors
 	/**
@@ -44,10 +51,25 @@ public class Map
 	 */
 	public Map(int width, int height)
 	{
-		this.grid = new Block[width][height];
+		this.grid = new Blocks[width][height];
+		setMap();
+		
 	}
 
 	// Methods
+	
+	/**
+	 * TODO javadoc
+	 */
+	private void setMap()
+	{
+		this.hashMap = new HashMap<String, Blocks>();
+		for(Blocks block : Blocks.values())
+		{
+			this.hashMap.put(block.getId(), block);
+		}
+	}
+	
 	/**
 	 * Get the current map width.
 	 * 
@@ -75,7 +97,7 @@ public class Map
 	 * @return block
 	 * @throws InvalidPositionException
 	 */
-	public Block getBlock(Position position) throws InvalidPositionException
+	public Blocks getBlock(Position position) throws InvalidPositionException
 	{
 		if (position.getX() < 0 || position.getY() < 0 || position.getX() > getMapWidth() || position.getY() > getMapHeight())
 		{
