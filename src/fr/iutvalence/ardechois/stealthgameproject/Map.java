@@ -1,7 +1,9 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
+import java.io.File;
 import java.util.HashMap;
 
+import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
 /**
@@ -22,6 +24,16 @@ public class Map
 	 * Default map height in <b>block</b>.
 	 */
 	public static final int DEFAULT_MAP_HEIGHT = 10;
+	
+	/**
+	 * Max map width in <b>block</b>.
+	 */
+	public static final int MAX_MAP_WIDTH = 50;
+	
+	/**
+	 * Max map height in <b>block</b>.
+	 */
+	public static final int MAX_MAP_HEIGHT = 40;
 
 	// Attributes
 	/**
@@ -36,9 +48,10 @@ public class Map
 
 	// Constructors
 	/**
-	 * Create a default map.
+	 * Create a default map. 
+	 * @throws InvalidMapSizeException 
 	 */
-	public Map()
+	public Map() throws InvalidMapSizeException
 	{
 		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_WIDTH);
 	}
@@ -48,15 +61,20 @@ public class Map
 	 * 
 	 * @param width
 	 * @param height
+	 * @throws InvalidMapSizeException 
 	 */
-	public Map(int width, int height)
+	public Map(int width, int height) throws InvalidMapSizeException
 	{
+		if(width < 0 || height < 0 || width > MAX_MAP_WIDTH || height > MAX_MAP_HEIGHT)
+		{
+			throw new InvalidMapSizeException();
+		}
+			
 		this.grid = new Blocks[width][height];
 		setHashMap();
 	}
 
 	// Methods
-	
 	/**
 	 * Set the HashMap with Blocks enumeration values.
 	 * 
@@ -107,5 +125,40 @@ public class Map
 		}
 		
 		return grid[position.getX()][position.getY()];
+	}
+	
+	/**
+	 * Place a block at the given position.
+	 * 
+	 * @param position
+	 * @param block
+	 * @throws InvalidPositionException 
+	 */
+	public void setBlock(Position position, Blocks block) throws InvalidPositionException
+	{
+		if (position.getX() < 0 || position.getY() < 0 || position.getX() > getMapWidth() || position.getY() > getMapHeight())
+		{
+			throw new InvalidPositionException();
+		}
+		
+		grid[position.getX()][position.getY()] = block;
+	}
+	
+	/**
+	 * Load a map from the filename.
+	 * @param filename
+	 */
+	private void loadMapFromFile(String filename)
+	{
+		loadMapFromFile(new File(filename));
+	}
+	
+	/**
+	 * Load a map from the file.
+	 * @param file
+	 */
+	private void loadMapFromFile(File file)
+	{
+		
 	}
 }

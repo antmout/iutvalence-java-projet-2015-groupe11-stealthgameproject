@@ -2,6 +2,8 @@ package fr.iutvalence.ardechois.stealthgameproject;
 
 import java.util.ArrayList;
 
+import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
+
 /**
  * Level of the game.
  * 
@@ -32,7 +34,13 @@ public class Level
      */
     public Level()
     {
-        currentMap = new Map();
+        try
+		{
+			currentMap = new Map();
+		} catch (InvalidMapSizeException e)
+		{
+			// never happen
+		}
         currentItem = new Item(new Position(0, 0));
         enemyList = new ArrayList<Enemy>();
 
