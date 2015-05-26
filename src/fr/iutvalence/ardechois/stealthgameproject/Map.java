@@ -53,7 +53,6 @@ public class Map
 	{
 		this.grid = new Blocks[width][height];
 		setHashMap();
-		
 	}
 
 	// Methods
