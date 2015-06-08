@@ -47,19 +47,19 @@ public class Map
 	private HashMap<Character, Blocks> hashMap;
 
 	// Constructors
-	
-	//Empty maps
+
+	// Empty maps
 	public Map()
 	{
 		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT);
 	}
-	
+
 	public Map(int width, int height)
 	{
 		setHashMap();
 		this.grid = new Blocks[width][height];
 	}
-	
+
 	// Map from file
 	public Map(String filename) throws InvalidMapSizeException
 	{
@@ -146,7 +146,7 @@ public class Map
 	 * Load a map from the filename.
 	 * 
 	 * @param filename
-	 * @throws InvalidMapSizeException 
+	 * @throws InvalidMapSizeException
 	 */
 	public void loadMapFromFile(String filename) throws InvalidMapSizeException
 	{
@@ -157,7 +157,7 @@ public class Map
 	 * Load a map from the file.
 	 * 
 	 * @param file
-	 * @throws InvalidMapSizeException 
+	 * @throws InvalidMapSizeException
 	 */
 	public void loadMapFromFile(File file) throws InvalidMapSizeException
 	{
@@ -167,25 +167,21 @@ public class Map
 
 			int width = fileReader.read();
 			int height = fileReader.read();
-			
-			if(width < 0 || width >= MAX_MAP_WIDTH || height < 0 || height >= MAX_MAP_HEIGHT)
+
+			if (width < 0 || width >= MAX_MAP_WIDTH || height < 0 || height >= MAX_MAP_HEIGHT)
 			{
 				fileReader.close();
 				throw new InvalidMapSizeException();
 			}
-				
-			
+
 			this.grid = new Blocks[width][height];
 
 			for (int lineNumber = 0; lineNumber < height; lineNumber++)
 			{
 				for (int columnNumber = 0; columnNumber < width; columnNumber++)
 				{
-					// grid[columnNumber][lineNumber] =
-					// hashMap.get(fileReader.read());
-					System.out.print((char) fileReader.read());
+					grid[columnNumber][lineNumber] = hashMap.get(fileReader.read());
 				}
-				System.out.println();
 			}
 
 			fileReader.close();
