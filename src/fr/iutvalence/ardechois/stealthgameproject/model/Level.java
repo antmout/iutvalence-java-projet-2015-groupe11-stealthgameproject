@@ -39,7 +39,6 @@ public class Level
 			currentMap = new Map("map1.txt");
 		} catch (InvalidMapSizeException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         currentItem = new Item(new Position(0, 0));
