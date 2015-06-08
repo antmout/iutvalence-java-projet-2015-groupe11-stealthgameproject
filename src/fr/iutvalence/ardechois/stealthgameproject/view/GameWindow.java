@@ -1,19 +1,12 @@
 package fr.iutvalence.ardechois.stealthgameproject.view;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GameWindow extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JPanel mainPanel;
@@ -44,5 +37,6 @@ public class GameWindow extends JFrame {
 		// TODO Icon icon = new ImageIcon(getClass().getResource("/test.png"));
 		
 		this.setVisible(true);
+		
 	}
 }
