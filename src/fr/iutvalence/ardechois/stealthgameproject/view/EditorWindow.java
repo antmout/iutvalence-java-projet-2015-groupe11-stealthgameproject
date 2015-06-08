@@ -1,8 +1,9 @@
 package fr.iutvalence.ardechois.stealthgameproject.view;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
+
+import fr.iutvalence.ardechois.stealthgameproject.model.Map;
 
 public class EditorWindow extends JFrame
 {
@@ -14,7 +15,7 @@ public class EditorWindow extends JFrame
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditorWindow()
+	public EditorWindow(Map map)
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -26,7 +27,7 @@ public class EditorWindow extends JFrame
 		mainPanel.setEnabled(false);
 		mainPanel.setDividerSize(0);
 		
-		mainPanel.add(new DisplayMap());
+		mainPanel.add(new DisplayMap(map));
 		
 		this.setContentPane(mainPanel);
 

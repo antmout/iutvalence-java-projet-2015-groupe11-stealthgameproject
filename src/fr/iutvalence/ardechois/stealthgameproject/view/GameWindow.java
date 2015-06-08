@@ -5,7 +5,8 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GameWindow extends JFrame {
+public class GameWindow extends JFrame
+{
 
 	private static final long serialVersionUID = 1L;
 
@@ -16,7 +17,8 @@ public class GameWindow extends JFrame {
 	 * Default GameWindow Constructor.
 	 * 
 	 */
-	public GameWindow() {
+	public GameWindow()
+	{
 
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -28,13 +30,13 @@ public class GameWindow extends JFrame {
 		this.setResizable(false);
 
 		this.setTitle("Stealth Game Project.");
-		
+
 		GridLayout layout = new GridLayout(50, 40);
 		mainPanel.setLayout(layout);
-		
+
 		// TODO Icon icon = new ImageIcon(getClass().getResource("/test.png"));
-		
+
 		this.setVisible(true);
-		
+
 	}
 }

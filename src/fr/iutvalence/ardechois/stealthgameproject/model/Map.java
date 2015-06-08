@@ -58,6 +58,14 @@ public class Map
 	{
 		setHashMap();
 		this.grid = new Blocks[width][height];
+		
+		for(int x=0; x<getMapWidth(); x++)
+		{
+			for(int y=0; y<getMapHeight(); y++)
+			{
+				this.grid[x][y] = Blocks.WALL;
+			}
+		}
 	}
 
 	// Map from file
@@ -117,7 +125,7 @@ public class Map
 	 */
 	public Blocks getBlock(Position position) throws InvalidPositionException
 	{
-		if (position.getX() < 0 || position.getY() < 0 || position.getX() > getMapWidth() || position.getY() > getMapHeight())
+		if (position.getX() < 0 || position.getY() < 0 || position.getX() >= getMapWidth() || position.getY() >= getMapHeight())
 		{
 			throw new InvalidPositionException();
 		}
