@@ -18,7 +18,7 @@ public class Editor
 	{
 		try
 		{
-			this.map = new Map("map1.txt");
+			this.map = new Map("map2.txt");
 			this.editorWindow = new EditorWindow(map);
 		} catch (InvalidMapSizeException e)
 		{
