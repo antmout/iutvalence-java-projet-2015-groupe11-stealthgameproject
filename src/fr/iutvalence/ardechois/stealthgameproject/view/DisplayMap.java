@@ -22,8 +22,8 @@ public class DisplayMap extends JPanel {
 	// TODO add pictures components.
 	};
 
-	public static final int NUM_ROWS = 50;
-	public static final int NUM_COLS = 40;
+	public static final int NUM_COLS = 50;
+	public static final int NUM_ROWS = 40;
 
 	public static final int PREFERRED_GRID_SIZE_PIXEL = 16;
 
@@ -49,8 +49,8 @@ public class DisplayMap extends JPanel {
 
 		g.clearRect(0, 0, getWidth(), getHeight());
 
-		int rectWidth = getWidth() / NUM_COLS;
-		int rectHeight = getHeight() / NUM_ROWS;
+		int rectWidth = 16;
+		int rectHeight = 16;
 
 		for (int i = 0; i < NUM_COLS; i++) {
 			for (int j = 0; j < NUM_ROWS; j++) {

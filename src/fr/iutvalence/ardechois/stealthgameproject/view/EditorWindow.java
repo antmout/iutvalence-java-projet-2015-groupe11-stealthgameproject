@@ -1,12 +1,13 @@
 package fr.iutvalence.ardechois.stealthgameproject.view;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
 public class EditorWindow extends JFrame
 {
-	public static final int WINDOW_WIDTH = 800;
-	public static final int WINDOW_HEIGHT = 640;
+	public static final int WINDOW_WIDTH = 808;
+	public static final int WINDOW_HEIGHT = 670;
 
 	/**
 	 * Serial Version UID.
@@ -24,6 +25,9 @@ public class EditorWindow extends JFrame
 		JSplitPane mainPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		mainPanel.setEnabled(false);
 		mainPanel.setDividerSize(0);
+		
+		mainPanel.add(new DisplayMap());
+		
 		this.setContentPane(mainPanel);
 
 		this.setVisible(true);

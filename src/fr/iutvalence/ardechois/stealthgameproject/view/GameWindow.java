@@ -9,8 +9,8 @@ public class GameWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int WINDOW_WIDTH = 800;
-	public static final int WINDOW_HEIGHT = 640;
+	public static final int WINDOW_WIDTH = 808;
+	public static final int WINDOW_HEIGHT = 670;
 
 	/**
 	 * Default GameWindow Constructor.
