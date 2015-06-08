@@ -2,7 +2,7 @@ package fr.iutvalence.ardechois.stealthgameproject;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
-public class Character
+public class Player
 {
 	/** The character position
 	 *  @see Position
@@ -16,7 +16,7 @@ public class Character
 	 *            :
 	 * 
 	 */
-	public Character(Position position)
+	public Player(Position position)
 	{
 		this.position = position;
 	}
