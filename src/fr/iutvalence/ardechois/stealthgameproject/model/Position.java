@@ -55,6 +55,11 @@ public class Position
 	{
 		setPosition(this.x + x, this.y + y);
 	}
+	
+	public void move(Direction direction)
+	{
+		setPosition(this.x + direction.getX(), this.y + direction.getY());
+	}
 
 	/**
 	 * Setter for the Position

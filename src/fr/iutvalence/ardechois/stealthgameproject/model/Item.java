@@ -14,7 +14,7 @@ public class Item
 	 * @see Position
 	 * 
 	 * */
-	private static Position position;
+	private Position position;
 
 	/**
 	 * True if the Item is already taken by the Character.

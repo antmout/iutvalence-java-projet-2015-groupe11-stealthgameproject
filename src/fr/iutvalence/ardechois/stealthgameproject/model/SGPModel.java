@@ -14,7 +14,7 @@ public class SGPModel
   {
       try
     {
-        player.move(direction, currentLevel.getCurrentMap().getMapWidth(), currentLevel.getCurrentMap().getMapHeight());
+        player.move(direction, currentLevel.getCurrentMap());
     } catch (InvalidPositionException e)
     {
         // TODO Auto-generated catch block

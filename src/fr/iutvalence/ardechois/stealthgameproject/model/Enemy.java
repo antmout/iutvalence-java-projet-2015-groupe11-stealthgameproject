@@ -11,12 +11,16 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionExce
  */
 public class Enemy
 {
-	/** The enemy position.
+	/**
+	 * The enemy position.
+	 * 
 	 * @see Position
 	 */
 	private Position position;
-	/** The enemy vision field. 
-	 *  @see VisionField
+	/**
+	 * The enemy vision field.
+	 * 
+	 * @see VisionField
 	 */
 	private static VisionField visionField;
 
@@ -47,38 +51,33 @@ public class Enemy
 	/**
 	 * Move the enemy to the neighbor square.
 	 * 
-	 * 
 	 * @param direction
-	 *            : The move direction.
-	 * @param mapHeight
-	 *            : The map height.
-	 * @param mapWidth
-	 *            : The map width.
+	 * @param map
+	 * @throws InvalidPositionException
 	 */
-	public void move(Direction direction, int mapHeight, int mapWidth)
-			throws InvalidPositionException
+	public void move(Direction direction, Map map) throws InvalidPositionException
 	{
 		switch (direction)
 		{
 		case UP:
-			if (this.position.getY() + 1 > mapHeight)
+			if (this.position.getY() + 1 > map.getMapHeight())
 				throw new InvalidPositionException();
-			this.position.move(0, 1);
+			this.position.move(direction);
 			break;
 		case DOWN:
 			if (this.position.getY() - 1 < 0)
 				throw new InvalidPositionException();
-			this.position.move(0, -1);
+			this.position.move(direction);
 			break;
 		case LEFT:
 			if (this.position.getX() - 1 < 0)
 				throw new InvalidPositionException();
-			this.position.move(-1, 0);
+			this.position.move(direction);
 			break;
 		case RIGHT:
-			if (this.position.getX() + 1 > mapWidth)
+			if (this.position.getX() + 1 > map.getMapWidth())
 				throw new InvalidPositionException();
-			this.position.move(1, 0);
+			this.position.move(direction);
 			break;
 		}
 	}
