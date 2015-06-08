@@ -9,11 +9,30 @@ import fr.iutvalence.ardechois.stealthgameproject.model.Map;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
 
+/**
+ * Allow to edit a map.
+ * 
+ * @author antoine
+ * @version 0.1.0
+ */
 public class Editor
 {
+	/** 
+	 * The map which is edited. 
+	 * 
+	 * @see Map
+	 */
 	private Map map;
+	/** 
+	 * The Editor window. 
+	 * 
+	 * @see EditorWindow
+	 */
 	private EditorWindow editorWindow;
 
+	/**
+	 * Default constructor.
+	 */
 	public Editor()
 	{
 		try
@@ -39,6 +58,12 @@ public class Editor
 		}
 	}
 
+	/**
+	 * Save the edited map in a target file.
+	 * 
+	 * @param file
+	 * 			The target file in which the map will be saved.
+	 */
 	public void saveMap(File file)
 	{
 		map.saveMapInFile(file);

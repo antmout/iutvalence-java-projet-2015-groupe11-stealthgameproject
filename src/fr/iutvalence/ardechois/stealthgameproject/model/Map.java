@@ -31,8 +31,14 @@ public class Map
 	 */
 	public static final int MAX_MAP_HEIGHT = 40;
 
+	/**
+	 * Default map width in <b>block</b>.
+	 */
 	private static final int DEFAULT_MAP_WIDTH = 10;
 
+	/**
+	 * Default map height in <b>block</b>.
+	 */
 	private static final int DEFAULT_MAP_HEIGHT = 10;
 
 	// Attributes

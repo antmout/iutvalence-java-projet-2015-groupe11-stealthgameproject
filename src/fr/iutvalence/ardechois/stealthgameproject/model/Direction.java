@@ -1,5 +1,12 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
+/**
+ * Choice of direction.
+ * 
+ * @author kelemenn
+ * 
+ * @version 0.1.0
+ */
 public enum Direction
 
 {

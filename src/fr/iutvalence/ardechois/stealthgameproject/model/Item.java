@@ -1,7 +1,7 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
 /**
- * Creation of item
+ * Represent an item.
  * 
  * @author vanbossm
  * 
@@ -47,7 +47,7 @@ public class Item
 	}
 
 	/**
-	 * Getter Taken.
+	 * Getter for the taken boolean.
 	 * 
 	 * @return taken
 	 * 

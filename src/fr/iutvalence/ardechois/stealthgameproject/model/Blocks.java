@@ -53,6 +53,11 @@ public enum Blocks
 		return this.id;
 	}
 
+	/**
+	 * Get the block icon.
+	 * 
+	 * @return icon
+	 */
 	public Icon getIcon()
 	{
 		return this.icon;
