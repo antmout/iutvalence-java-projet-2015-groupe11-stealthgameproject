@@ -9,10 +9,8 @@ public class GameWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private JPanel mainPanel;
-
-	public static final int WINDOW_HEIGHT = 800;
-	public static final int WINDOW_WIDTH = 640;
+	public static final int WINDOW_WIDTH = 800;
+	public static final int WINDOW_HEIGHT = 640;
 
 	/**
 	 * Default GameWindow Constructor.
@@ -22,10 +20,10 @@ public class GameWindow extends JFrame {
 
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		this.mainPanel = new JPanel();
-		getContentPane().add(this.mainPanel);
+		JPanel mainPanel = new JPanel();
+		getContentPane().add(mainPanel);
 
-		this.setSize(WINDOW_HEIGHT, WINDOW_WIDTH);
+		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
 		this.setResizable(false);
 
