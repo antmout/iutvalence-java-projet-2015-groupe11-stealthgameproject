@@ -43,6 +43,7 @@ public class Player
 	 * @param mapWidth
 	 *            : The map width.
 	 */
+	// TODO maybe use map
 	public void move(Direction direction, int mapHeight, int mapWidth)
 			throws InvalidPositionException
 	{
