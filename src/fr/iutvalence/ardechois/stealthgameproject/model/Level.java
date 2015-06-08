@@ -34,12 +34,13 @@ public class Level
      */
     public Level()
     {
-        try
+		try
 		{
-			currentMap = new Map();
+			currentMap = new Map("map1.txt");
 		} catch (InvalidMapSizeException e)
 		{
-			// never happen
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
         currentItem = new Item(new Position(0, 0));
         enemyList = new ArrayList<Enemy>();

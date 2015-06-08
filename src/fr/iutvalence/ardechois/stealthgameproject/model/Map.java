@@ -1,14 +1,9 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -25,71 +20,56 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionExce
 public class Map
 {
 	// Constants
-	/**
-	 * Default map width in <b>block</b>.
-	 */
-	public static final int DEFAULT_MAP_WIDTH = 10;
-	/**
-	 * Default map height in <b>block</b>.
-	 */
-	public static final int DEFAULT_MAP_HEIGHT = 10;
-	
+
 	/**
 	 * Max map width in <b>block</b>.
 	 */
 	public static final int MAX_MAP_WIDTH = 50;
-	
+
 	/**
 	 * Max map height in <b>block</b>.
 	 */
 	public static final int MAX_MAP_HEIGHT = 40;
 
+	private static final int DEFAULT_MAP_WIDTH = 10;
+
+	private static final int DEFAULT_MAP_HEIGHT = 10;
+
 	// Attributes
 	/**
 	 * Map grid.
 	 */
-	private final Blocks[][] grid;
-	
+	private Blocks[][] grid;
+
 	/**
 	 * HashMap that contains link between String and Blocks.
 	 */
 	private HashMap<Character, Blocks> hashMap;
 
 	// Constructors
-	/**
-	 * Create a default map.
-	 * @throws InvalidMapSizeException 
-	 */
-	public Map() throws InvalidMapSizeException
+	
+	//Empty maps
+	public Map()
 	{
-		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_WIDTH);
+		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT);
+	}
+	
+	public Map(int width, int height)
+	{
+		setHashMap();
+		this.grid = new Blocks[width][height];
+	}
+	
+	// Map from file
+	public Map(String filename) throws InvalidMapSizeException
+	{
+		this(new File(filename));
 	}
 
-	/**
-	 * Create a map with given width and height.
-	 * 
-	 * @param width
-	 * @param height
-	 * @throws InvalidMapSizeException 
-	 */
-	public Map(int width, int height) throws InvalidMapSizeException
+	public Map(File file) throws InvalidMapSizeException
 	{
-		if(width < 0 || height < 0 || width > MAX_MAP_WIDTH || height > MAX_MAP_HEIGHT)
-		{
-			throw new InvalidMapSizeException();
-		}
-		
 		setHashMap();
-			
-		this.grid = new Blocks[width][height];
-		
-		for(int lineNumber = 0; lineNumber < height; lineNumber++)
-		{
-			for(int columnNumber = 0; columnNumber < width; columnNumber++)
-			{
-				grid[columnNumber][lineNumber] = Blocks.FLOOR;
-			}
-		}
+		loadMapFromFile(file);
 	}
 
 	// Methods
@@ -102,12 +82,12 @@ public class Map
 	private void setHashMap()
 	{
 		this.hashMap = new HashMap<Character, Blocks>();
-		for(Blocks block : Blocks.values())
+		for (Blocks block : Blocks.values())
 		{
 			this.hashMap.put(Character.valueOf(block.getId()), block);
 		}
 	}
-	
+
 	/**
 	 * Get the current map width.
 	 * 
@@ -141,16 +121,16 @@ public class Map
 		{
 			throw new InvalidPositionException();
 		}
-		
+
 		return grid[position.getX()][position.getY()];
 	}
-	
+
 	/**
 	 * Place a block at the given position.
 	 * 
 	 * @param position
 	 * @param block
-	 * @throws InvalidPositionException 
+	 * @throws InvalidPositionException
 	 */
 	public void setBlock(Position position, Blocks block) throws InvalidPositionException
 	{
@@ -158,129 +138,108 @@ public class Map
 		{
 			throw new InvalidPositionException();
 		}
-		
+
 		grid[position.getX()][position.getY()] = block;
 	}
-	
+
 	/**
 	 * Load a map from the filename.
+	 * 
 	 * @param filename
-	 * @throws FileNotFoundException 
+	 * @throws InvalidMapSizeException 
 	 */
-	public void loadMapFromFile(String filename) throws FileNotFoundException
+	public void loadMapFromFile(String filename) throws InvalidMapSizeException
 	{
 		loadMapFromFile(new File(filename));
 	}
-	
+
 	/**
 	 * Load a map from the file.
+	 * 
 	 * @param file
-	 * @throws FileNotFoundException 
+	 * @throws InvalidMapSizeException 
 	 */
-	public void loadMapFromFile(File file) throws FileNotFoundException
+	public void loadMapFromFile(File file) throws InvalidMapSizeException
 	{
-		DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(new FileInputStream(file)));
-		
-		char character;
-		int width;
-		int height;
-		
 		try
 		{
-			width = dataInputStream.readInt();
-			height = dataInputStream.readInt();
+			FileReader fileReader = new FileReader(file);
+
+			int width = fileReader.read();
+			int height = fileReader.read();
 			
-			System.out.println(width);
-			System.out.println(height);
-			
-			/*for(int lineNumber = 0; lineNumber < height; lineNumber++)
+			if(width < 0 || width >= MAX_MAP_WIDTH || height < 0 || height >= MAX_MAP_HEIGHT)
 			{
-				for(int columnNumber = 0; columnNumber < width; columnNumber++)
-				{
-					character = dataInputStream.readChar();
-					System.out.print(character);
-				}
-			}*/
-			
-			while(dataInputStream.available() > 0)
-			{
-				System.out.print(dataInputStream.readChar());
+				fileReader.close();
+				throw new InvalidMapSizeException();
 			}
+				
+			
+			this.grid = new Blocks[width][height];
+
+			for (int lineNumber = 0; lineNumber < height; lineNumber++)
+			{
+				for (int columnNumber = 0; columnNumber < width; columnNumber++)
+				{
+					// grid[columnNumber][lineNumber] =
+					// hashMap.get(fileReader.read());
+					System.out.print((char) fileReader.read());
+				}
+				System.out.println();
+			}
+
+			fileReader.close();
+
+		} catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally
-		{
-			if(dataInputStream != null)
-			{
-				try
-				{
-					dataInputStream.close();
-				} catch (IOException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 		}
 	}
-	
-	public void saveMapInFile(String filename) throws FileNotFoundException
+
+	/**
+	 * Save the map in the file.
+	 * 
+	 * @param filename
+	 */
+	public void saveMapInFile(String filename)
 	{
 		saveMapInFile(new File(filename));
 	}
-	
-	public void saveMapInFile(File file) throws FileNotFoundException
+
+	/**
+	 * Save the map in the file.
+	 * 
+	 * @param file
+	 */
+	public void saveMapInFile(File file)
 	{
-		DataOutputStream dataOutputStream = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(file)));
-		
 		try
 		{
-			dataOutputStream.writeInt(getMapWidth());
-			dataOutputStream.writeInt(getMapHeight());
+			FileWriter fileWriter = new FileWriter(file);
+
+			fileWriter.write(getMapWidth());
+			fileWriter.write(getMapHeight());
+
+			for (int lineNumber = 0; lineNumber < getMapHeight(); lineNumber++)
+			{
+				for (int columnNumber = 0; columnNumber < getMapWidth(); columnNumber++)
+				{
+					if (grid[columnNumber][lineNumber] != null)
+						fileWriter.write(grid[columnNumber][lineNumber].getId());
+				}
+			}
+
+			fileWriter.close();
+
 		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally
-		{
-			try
-			{
-				dataOutputStream.close();
-			} catch (IOException e)
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		for(int lineNumber = 0; lineNumber < getMapHeight(); lineNumber++)
-		{
-			for(int columnNumber = 0; columnNumber < getMapWidth(); columnNumber++)
-			{
-				try
-				{
-					if(grid[lineNumber][columnNumber] != null)
-					{
-						dataOutputStream.writeChar(grid[lineNumber][columnNumber].getId());
-					}
-				} catch (IOException e)
-				{
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} finally
-				{
-					try
-					{
-						dataOutputStream.close();
-					} catch (IOException e)
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
 		}
 	}
 }
