@@ -49,21 +49,25 @@ public class Map
 	// Constructors
 
 	// Empty maps
-	public Map()
+	public Map() throws InvalidMapSizeException
 	{
 		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT);
 	}
 
-	public Map(int width, int height)
+	public Map(int width, int height) throws InvalidMapSizeException
 	{
 		setHashMap();
+		
+		if(width < 0 || height < 0 || width > MAX_MAP_WIDTH || height > MAX_MAP_HEIGHT)
+			throw new InvalidMapSizeException();
+		
 		this.grid = new Blocks[width][height];
 		
 		for(int x=0; x<getMapWidth(); x++)
 		{
 			for(int y=0; y<getMapHeight(); y++)
 			{
-				this.grid[x][y] = Blocks.WALL;
+				this.grid[x][y] = Blocks.FLOOR;
 			}
 		}
 	}
@@ -176,7 +180,7 @@ public class Map
 			int width = fileReader.read();
 			int height = fileReader.read();
 
-			if (width < 0 || width >= MAX_MAP_WIDTH || height < 0 || height >= MAX_MAP_HEIGHT)
+			if (width < 0 || width > MAX_MAP_WIDTH || height < 0 || height > MAX_MAP_HEIGHT)
 			{
 				fileReader.close();
 				throw new InvalidMapSizeException();
@@ -188,7 +192,7 @@ public class Map
 			{
 				for (int columnNumber = 0; columnNumber < width; columnNumber++)
 				{
-					grid[columnNumber][lineNumber] = hashMap.get(fileReader.read());
+					grid[columnNumber][lineNumber] = hashMap.get((char) fileReader.read());
 				}
 			}
 

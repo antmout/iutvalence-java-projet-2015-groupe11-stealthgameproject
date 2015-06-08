@@ -72,8 +72,8 @@ public class DisplayMap extends JPanel
 				int x = i * rectWidth;
 				int y = j * rectHeight;
 				Icon groundIcon = groundGrid[i][j];
-				//g.drawImage((Image) groundIcon, 0, 0, null);
-				g.fillRect(x, y, rectWidth, rectHeight);
+				if(groundIcon != null)
+					g.drawImage(((ImageIcon) groundIcon).getImage(), x, y, null);
 			}
 		}
 

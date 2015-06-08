@@ -16,8 +16,15 @@ public class Editor
 
 	public Editor()
 	{
-		this.map = new Map();
-		this.editorWindow = new EditorWindow(map);
+		try
+		{
+			this.map = new Map("map1.txt");
+			this.editorWindow = new EditorWindow(map);
+		} catch (InvalidMapSizeException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void setBlock(Position position, Blocks block)
