@@ -1,5 +1,7 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
@@ -15,7 +17,7 @@ import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
  * @author antoine
  * @version 0.1.0
  */
-public class Editor
+public class Editor implements MouseListener
 {
 	/** 
 	 * The map which is edited. 
@@ -38,7 +40,7 @@ public class Editor
 		try
 		{
 			this.map = new Map("map2.txt");
-			this.editorWindow = new EditorWindow(map);
+			this.editorWindow = new EditorWindow(map, this);
 		} catch (InvalidMapSizeException e)
 		{
 			// TODO Auto-generated catch block
@@ -67,5 +69,51 @@ public class Editor
 	public void saveMap(File file)
 	{
 		map.saveMapInFile(file);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+		// TODO debug
+		System.out.println("(" + e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE + ";" + e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE + ")");
+		
+		Position mousePositionBlock = new Position(e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE, e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE);
+		try
+		{
+			map.setBlock(mousePositionBlock, Blocks.WALL);
+		} catch (InvalidPositionException e1)
+		{
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }

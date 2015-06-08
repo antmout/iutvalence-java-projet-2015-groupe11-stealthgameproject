@@ -20,17 +20,17 @@ public class DisplayMap extends JPanel
 	public static final int NUM_COLS = 50;
 	public static final int NUM_ROWS = 40;
 
-	public static final int PREFERRED_GRID_SIZE_PIXEL = 16;
-
 	private int mapWidth;
 	private int mapHeight;
+	private int preferredBlockSize;
 
 	private final Icon[][] groundGrid;
 
-	public DisplayMap(Map map)
+	public DisplayMap(Map map, int preferredBlockSize)
 	{
 		this.mapWidth = map.getMapWidth();
 		this.mapHeight = map.getMapHeight();
+		this.preferredBlockSize = preferredBlockSize;
 
 		this.groundGrid = new Icon[mapWidth][mapHeight];
 		for (int i = 0; i < mapWidth; i++)
@@ -48,8 +48,8 @@ public class DisplayMap extends JPanel
 				}
 			}
 		}
-		int preferredWidth = mapWidth * PREFERRED_GRID_SIZE_PIXEL;
-		int preferredHeight = mapWidth * PREFERRED_GRID_SIZE_PIXEL;
+		int preferredWidth = mapWidth * this.preferredBlockSize;
+		int preferredHeight = mapWidth * this.preferredBlockSize;
 		setPreferredSize(new Dimension(preferredWidth, preferredHeight));
 
 	}
@@ -61,8 +61,8 @@ public class DisplayMap extends JPanel
 
 		g.clearRect(0, 0, getWidth(), getHeight());
 
-		int rectWidth = 16;
-		int rectHeight = 16;
+		int rectWidth = this.preferredBlockSize;
+		int rectHeight = this.preferredBlockSize;
 
 		for (int i = 0; i < mapWidth; i++)
 		{
