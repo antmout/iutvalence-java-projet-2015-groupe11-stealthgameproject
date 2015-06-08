@@ -1,5 +1,9 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
+import fr.iutvalence.ardechois.stealthgameproject.controller.SGPController;
+import fr.iutvalence.ardechois.stealthgameproject.model.SGPModel;
+import fr.iutvalence.ardechois.stealthgameproject.view.GameWindow;
+
 /**
  * Allow to launch the application.
  * 
@@ -11,7 +15,7 @@ public class GameLauncher
 
 	public static void main(String[] args)
 	{
-		
+		SGPController game = new SGPController();
 	}
 
 }

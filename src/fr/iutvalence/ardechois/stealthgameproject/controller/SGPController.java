@@ -13,12 +13,12 @@ public class SGPController
     
     public HashMap<String, Direction> directionHashMap;
     
-    public SGPController(SGPModel model, SGPView view)
+    public SGPController()
     {
         setHashMap();
         
-        this.model=model;
-        this.view=view;
+        this.model = new SGPModel();
+        this.view = new SGPView();
     }
     
     private void setHashMap()

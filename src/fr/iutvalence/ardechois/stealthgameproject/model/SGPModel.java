@@ -9,6 +9,11 @@ public class SGPModel
   
   private Level currentLevel;
   
+  public SGPModel()
+  {
+	  player = new Player(new Position(0,0));
+	  currentLevel = new Level();
+  }
   
   public void move(Direction direction)
   {
