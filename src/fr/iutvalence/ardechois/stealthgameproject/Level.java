@@ -50,7 +50,6 @@ public class Level
      * Getter of the current map.
      * 
      * @return currentMap
-     * @deprecated
      */
     public Map getCurrentMap()
     {
