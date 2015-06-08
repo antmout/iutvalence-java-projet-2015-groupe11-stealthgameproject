@@ -1,6 +1,6 @@
 package fr.iutvalence.ardechois.stealthgameproject.controller;
 
-import fr.iutvalence.ardechois.stealthgameproject.Position;
+import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 import fr.iutvalence.ardechois.stealthgameproject.model.SGPModel;
 import fr.iutvalence.ardechois.stealthgameproject.view.SGPView;
 

@@ -1,4 +1,4 @@
-package fr.iutvalence.ardechois.stealthgameproject;
+package fr.iutvalence.ardechois.stealthgameproject.model;
 
 /**
  * Block that compose the map.

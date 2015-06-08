@@ -3,6 +3,7 @@ package fr.iutvalence.ardechois.stealthgameproject;
 import java.io.FileNotFoundException;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
+import fr.iutvalence.ardechois.stealthgameproject.model.Map;
 
 /**
  * Allow to launch the application.
