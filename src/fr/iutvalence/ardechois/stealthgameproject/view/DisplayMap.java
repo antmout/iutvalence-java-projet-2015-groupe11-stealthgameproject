@@ -6,11 +6,7 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
-import fr.iutvalence.ardechois.stealthgameproject.model.Map;
 
 public class DisplayMap extends JPanel {
 
