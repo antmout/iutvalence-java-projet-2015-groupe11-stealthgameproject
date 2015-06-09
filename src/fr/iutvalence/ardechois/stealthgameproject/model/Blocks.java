@@ -12,18 +12,25 @@ import javax.swing.ImageIcon;
 public enum Blocks
 {
 	/**
-	 * Wall block.
+	 * Floor block.
 	 * 
 	 * @value "0"
 	 */
-	WALL('0', "/wall.png"),
-
+	FLOOR('0', "/floor.png"),
+	
 	/**
-	 * Floor block.
+	 * Wall block.
 	 * 
 	 * @value "1"
 	 */
-	FLOOR('1', "/floor.png");
+	WALL('1', "/wall.png"),
+	
+	/**
+	 * Grass block
+	 * 
+	 * @value "2"
+	 */
+	GRASS('2', "/grass.png");
 
 	/**
 	 * Block id, only one character.

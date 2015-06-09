@@ -253,4 +253,16 @@ public class Map
 			e.printStackTrace();
 		}
 	}
+
+	public void reset()
+	{
+		for (int lineNumber = 0; lineNumber < getMapHeight(); lineNumber++)
+		{
+			for (int columnNumber = 0; columnNumber < getMapWidth(); columnNumber++)
+			{
+				grid[columnNumber][lineNumber] = Blocks.GRASS;
+			}
+		}
+		
+	}
 }

@@ -141,17 +141,21 @@ public class Editor implements MouseListener
 			{
 				System.out.println("Mouse button pressed out of map.");
 			}
-
-			editorWindow.invalidate();
-			editorWindow.repaint();
-			editorWindow.validate();
 			break;
 
 		case MouseEvent.BUTTON3:
 			saveMap(file);
 			System.out.println("Map saved in " + file.getName());
 			break;
+			
+		case MouseEvent.BUTTON2:
+			map.reset();
+			break;
 		}
+		
+		editorWindow.invalidate();
+		editorWindow.repaint();
+		editorWindow.validate();
 	}
 
 	@Override
