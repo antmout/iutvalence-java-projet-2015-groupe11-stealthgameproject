@@ -13,18 +13,24 @@ import fr.iutvalence.ardechois.stealthgameproject.view.SGPView;
  */
 public class SGPController implements KeyListener
 {
+	// TODO Javadoc ;)
 	private SGPModel model;
+
+	// TODO Javadoc ;)
 	private SGPView view;
 
+	// TODO Javadoc ;)
 	public HashMap<String, Direction> directionHashMap;
 
+	// TODO Javadoc ;)
 	public SGPController()
 	{
 		setHashMap();
 		this.model = new SGPModel();
 		this.view = new SGPView(model.getLevel().getCurrentMap(), model.getPlayer(), this);
 	}
-
+	
+	// TODO Javadoc ;)
 	private void setHashMap()
 	{
 		this.directionHashMap = new HashMap<String, Direction>();
@@ -33,20 +39,21 @@ public class SGPController implements KeyListener
 		this.directionHashMap.put("LEFT", Direction.LEFT);
 		this.directionHashMap.put("RIGHT", Direction.RIGHT);
 	}
-
+	
+	// TODO Javadoc ;)
 	public void move(Direction direction)
 	{
 		model.move(direction);
 	}
 
-	// STARTING DEVELOPMENT OF THE KEYBOARD MANAGER \\
-
+	@Override
 	public void keyTyped(KeyEvent e)
 	{
 		// TODO Auto-generated method stub
 
 	}
-
+	
+	@Override
 	public void keyPressed(KeyEvent e)
 	{
 		int key = e.getKeyCode();
@@ -69,10 +76,12 @@ public class SGPController implements KeyListener
 				this.model.move(Direction.RIGHT);
 				break;
 		}
-		
+
 		this.view.updateWindow();
 	}
-
+	
+	@Override
+	@Deprecated
 	public void keyReleased(KeyEvent e)
 	{
 		// TODO Useless ;)

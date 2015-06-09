@@ -9,14 +9,18 @@ import javax.swing.JPanel;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 
+//TODO Javadoc ;)
 public class DisplayMap extends JPanel
 {
-
+	// TODO Javadoc ;)
 	private static final long serialVersionUID = 1L;
 
+	// TODO Javadoc ;)
 	public static final int NUM_COLS = 50;
+	// TODO Javadoc ;)
 	public static final int NUM_ROWS = 40;
 	
+	// TODO Javadoc ;)
 	public static final String PLAYER_FILENAME = "/test.png";
 
 	private int mapWidth;
@@ -28,6 +32,7 @@ public class DisplayMap extends JPanel
 	private Icon[][] groundGrid;
 	private Icon playerIcon;
 
+	// TODO Javadoc ;)
 	public DisplayMap(MapGetter mapGetter, PlayerGetter playerGetter, int preferredBlockSize)
 	{
 		this.mapGetter = mapGetter;
@@ -80,6 +85,7 @@ public class DisplayMap extends JPanel
 		}
 	}
 	
+	// TODO Javadoc ;)
 	private void updateGroundGrid()
 	{
 		this.groundGrid = new Icon[mapWidth][mapHeight];

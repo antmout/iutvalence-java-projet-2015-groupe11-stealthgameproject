@@ -11,11 +11,11 @@ import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
  */
 public class GameLauncher
 {
-
+	// TODO Javadoc ;)
 	public static void main(String[] args)
 	{
 		SGPController game = new SGPController();
-		//Editor editor = new Editor();
+		// Editor editor = new Editor();
 	}
 
 }

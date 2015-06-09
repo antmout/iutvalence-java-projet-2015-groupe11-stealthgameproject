@@ -50,20 +50,23 @@ public class Position
 		return y;
 	}
 
+	// TODO Javadoc ;)
 	/** Move. */
 	public void move(int x, int y)
 	{
 		setPosition(this.x + x, this.y + y);
 	}
 	
+	// TODO Javadoc ;)
 	public void move(Direction direction)
 	{
 		setPosition(this.x + direction.getX(), this.y + direction.getY());
 	}
 
 	/**
-	 * Setter for the Position
-	 * 
+	 * Setter for the Position.
+	 * @param x
+	 * @param y
 	 */
 	private void setPosition(int x, int y)
 	{

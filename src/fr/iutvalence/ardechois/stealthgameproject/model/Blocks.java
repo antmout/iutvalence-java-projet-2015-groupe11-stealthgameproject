@@ -43,7 +43,8 @@ public enum Blocks
 	 * Block id, only one character.
 	 */
 	private char id;
-
+	
+	// TODO Javadoc ;)
 	private Icon icon;
 
 	/**
@@ -77,6 +78,7 @@ public enum Blocks
 		return this.icon;
 	}
 	
+	// TODO Javadoc ;)
 	public Blocks getNext()
 	{
 		return values()[(ordinal()+1) % values().length];

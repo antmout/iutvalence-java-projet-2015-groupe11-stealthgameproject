@@ -3,7 +3,6 @@ package fr.iutvalence.ardechois.stealthgameproject;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
-
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Blocks;
@@ -19,9 +18,9 @@ import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
  */
 public class Editor implements MouseListener
 {
-	
+	// TODO Javadoc ;)
 	public static final String DEFAULT_MAP_NAME = "tempMap.txt";
-	
+
 	/**
 	 * The map which is edited.
 	 * 
@@ -34,7 +33,8 @@ public class Editor implements MouseListener
 	 * @see EditorWindow
 	 */
 	private EditorWindow editorWindow;
-	
+
+	// TODO Javadoc ;)
 	private File file;
 
 	/**
@@ -47,18 +47,21 @@ public class Editor implements MouseListener
 			this.file = new File(DEFAULT_MAP_NAME);
 			this.map = new Map(this.file);
 			this.editorWindow = new EditorWindow(map, null, this);
-		} catch (InvalidMapSizeException e)
+		}
+		catch (InvalidMapSizeException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
+	// TODO Javadoc ;)
 	public Editor(String filename)
 	{
 		this(new File(filename));
 	}
-	
+
+	// TODO Javadoc ;)
 	public Editor(File file)
 	{
 		try
@@ -66,19 +69,22 @@ public class Editor implements MouseListener
 			this.file = file;
 			this.map = new Map(this.file);
 			this.editorWindow = new EditorWindow(map, null, this);
-		} catch (InvalidMapSizeException e)
+		}
+		catch (InvalidMapSizeException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	// TODO Javadoc ;)
 	public void setBlock(Position position, Blocks block)
 	{
 		try
 		{
 			map.setBlock(position, block);
-		} catch (InvalidPositionException e)
+		}
+		catch (InvalidPositionException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -132,27 +138,29 @@ public class Editor implements MouseListener
 	{
 		switch (e.getButton())
 		{
-		case MouseEvent.BUTTON1:
-			Position mousePositionBlock = new Position(e.getX() / EditorWindow.PREFERRED_BLOCK_SIZE, e.getY() / EditorWindow.PREFERRED_BLOCK_SIZE);
-			try
-			{
-				map.setBlock(mousePositionBlock, map.getBlock(mousePositionBlock).getNext());
-			} catch (InvalidPositionException e1)
-			{
-				System.out.println("Mouse button pressed out of map.");
-			}
-			break;
+			case MouseEvent.BUTTON1 :
+				Position mousePositionBlock = new Position(e.getX() / EditorWindow.PREFERRED_BLOCK_SIZE, e.getY()
+						/ EditorWindow.PREFERRED_BLOCK_SIZE);
+				try
+				{
+					map.setBlock(mousePositionBlock, map.getBlock(mousePositionBlock).getNext());
+				}
+				catch (InvalidPositionException e1)
+				{
+					System.out.println("Mouse button pressed out of map.");
+				}
+				break;
 
-		case MouseEvent.BUTTON3:
-			saveMap(file);
-			System.out.println("Map saved in " + file.getName());
-			break;
-			
-		case MouseEvent.BUTTON2:
-			map.reset();
-			break;
+			case MouseEvent.BUTTON3 :
+				saveMap(file);
+				System.out.println("Map saved in " + file.getName());
+				break;
+
+			case MouseEvent.BUTTON2 :
+				map.reset();
+				break;
 		}
-		
+
 		editorWindow.invalidate();
 		editorWindow.repaint();
 		editorWindow.validate();

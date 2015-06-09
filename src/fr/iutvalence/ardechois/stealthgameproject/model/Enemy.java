@@ -17,6 +17,7 @@ public class Enemy
 	 * @see Position
 	 */
 	private Position position;
+	
 	/**
 	 * The enemy vision field.
 	 * 

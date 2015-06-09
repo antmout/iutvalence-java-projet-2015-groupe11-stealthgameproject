@@ -4,8 +4,10 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionExce
 import fr.iutvalence.ardechois.stealthgameproject.model.Blocks;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 
+//TODO Javadoc ;)
 public interface MapGetter
 {
+	// TODO Javadoc ;)
 	public Blocks getBlock(Position position) throws InvalidPositionException;
 	
 	public int getMapWidth();

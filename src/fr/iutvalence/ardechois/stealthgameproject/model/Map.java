@@ -56,11 +56,13 @@ public class Map implements MapGetter
 	// Constructors
 
 	// Empty maps
+	// TODO Javadoc ;)
 	public Map() throws InvalidMapSizeException
 	{
 		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT);
 	}
-
+	
+	// TODO Javadoc ;)
 	public Map(int width, int height) throws InvalidMapSizeException
 	{
 		setHashMap();
@@ -80,11 +82,13 @@ public class Map implements MapGetter
 	}
 
 	// Map from file
+	// TODO Javadoc ;)
 	public Map(String filename) throws InvalidMapSizeException
 	{
 		this(new File(filename));
 	}
-
+	
+	// TODO Javadoc ;)
 	public Map(File file) throws InvalidMapSizeException
 	{
 		setHashMap();
@@ -255,6 +259,7 @@ public class Map implements MapGetter
 		}
 	}
 
+	// TODO Javadoc ;)
 	public void reset()
 	{
 		for (int lineNumber = 0; lineNumber < getMapHeight(); lineNumber++)

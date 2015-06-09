@@ -3,6 +3,7 @@ package fr.iutvalence.ardechois.stealthgameproject.model;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.view.PlayerGetter;
 
+//TODO Javadoc ;)
 public class Player implements PlayerGetter
 {
 	/**
