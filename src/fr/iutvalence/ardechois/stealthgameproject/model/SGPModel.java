@@ -27,7 +27,7 @@ public class SGPModel
 		} catch (InvalidPositionException e)
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
