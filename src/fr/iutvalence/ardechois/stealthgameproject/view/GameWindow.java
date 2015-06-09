@@ -1,11 +1,14 @@
 package fr.iutvalence.ardechois.stealthgameproject.view;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 
-public class GameWindow extends JFrame
+public class GameWindow extends JFrame 
 {
 
 	private static final long serialVersionUID = 1L;
@@ -13,28 +16,31 @@ public class GameWindow extends JFrame
 	public static final int WINDOW_WIDTH = 808;
 	public static final int WINDOW_HEIGHT = 670;
 
+	public static final int PREFERRED_BLOCK_SIZE = 16;
+	
 	/**
 	 * Default GameWindow Constructor.
 	 * 
 	 */
-	public GameWindow()
+	public GameWindow(MapGetter mapGetter, PlayerGetter playerGetter, KeyListener keyListener)
 	{
-
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		JPanel mainPanel = new JPanel();
-		getContentPane().add(mainPanel);
-
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-
 		this.setResizable(false);
+		this.setTitle("Stealth Game Project: editor");
 
-		this.setTitle("Stealth Game Project.");
-
-		GridLayout layout = new GridLayout(50, 40);
-		mainPanel.setLayout(layout);
+		JSplitPane mainPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		mainPanel.setEnabled(false);
+		mainPanel.setDividerSize(0);
+		
+		mainPanel.add(new DisplayMap(mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
+		
+		mainPanel.addKeyListener(keyListener);
 
 		// TODO Icon icon = new ImageIcon(getClass().getResource("/test.png"));
+		
+		this.setContentPane(mainPanel);
 
 		this.setVisible(true);
 

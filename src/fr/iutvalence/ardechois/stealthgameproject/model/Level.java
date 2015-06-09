@@ -36,7 +36,7 @@ public class Level
     {
 		try
 		{
-			currentMap = new Map("map1.txt");
+			currentMap = new Map("tempMap.txt");
 		} catch (InvalidMapSizeException e)
 		{
 			e.printStackTrace();

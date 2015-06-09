@@ -17,7 +17,7 @@ public class EditorWindow extends JFrame
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditorWindow(MapGetter map, PlayerGetter playerGetter, MouseListener mouseListener)
+	public EditorWindow(MapGetter mapGetter, PlayerGetter playerGetter, MouseListener mouseListener)
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -29,7 +29,7 @@ public class EditorWindow extends JFrame
 		mainPanel.setEnabled(false);
 		mainPanel.setDividerSize(0);
 		
-		mainPanel.add(new DisplayMap(map, playerGetter, PREFERRED_BLOCK_SIZE));
+		mainPanel.add(new DisplayMap(mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
 		
 		mainPanel.addMouseListener(mouseListener);
 		

@@ -22,7 +22,7 @@ public class SGPController implements KeyListener
 	{
 		setHashMap();
 		this.model = new SGPModel();
-		this.view = new SGPView();
+		this.view = new SGPView(model.getLevel().getCurrentMap(), model.getPlayer(), this);
 	}
 
 	private void setHashMap()
@@ -49,6 +49,7 @@ public class SGPController implements KeyListener
 
 	public void keyPressed(KeyEvent e)
 	{
+		System.out.println("test");
 		int key = e.getKeyCode();
 
 		switch (key)

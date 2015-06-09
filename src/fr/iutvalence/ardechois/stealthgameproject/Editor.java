@@ -8,7 +8,6 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeExcep
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Blocks;
 import fr.iutvalence.ardechois.stealthgameproject.model.Map;
-import fr.iutvalence.ardechois.stealthgameproject.model.Player;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
 
