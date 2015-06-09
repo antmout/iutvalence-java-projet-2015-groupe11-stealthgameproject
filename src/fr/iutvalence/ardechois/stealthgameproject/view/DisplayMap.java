@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
-import fr.iutvalence.ardechois.stealthgameproject.model.Map;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 
 public class DisplayMap extends JPanel
@@ -21,16 +20,16 @@ public class DisplayMap extends JPanel
 	private int mapWidth;
 	private int mapHeight;
 	private int preferredBlockSize;
-	private Map map;
+	private MapGetter mapGetter;
 
 	private Icon[][] groundGrid;
 
-	public DisplayMap(Map map, int preferredBlockSize)
+	public DisplayMap(MapGetter mapGetter, int preferredBlockSize)
 	{
-		this.map = map;
+		this.mapGetter = mapGetter;
 		
-		this.mapWidth = map.getMapWidth();
-		this.mapHeight = map.getMapHeight();
+		this.mapWidth = mapGetter.getMapWidth();
+		this.mapHeight = mapGetter.getMapHeight();
 		this.preferredBlockSize = preferredBlockSize;
 
 		updategroundGrid();
@@ -76,8 +75,8 @@ public class DisplayMap extends JPanel
 			{
 				try
 				{
-					if (map.getBlock(new Position(i, j)) != null)
-						this.groundGrid[i][j] = map.getBlock(new Position(i, j)).getIcon();
+					if (mapGetter.getBlock(new Position(i, j)) != null)
+						this.groundGrid[i][j] = mapGetter.getBlock(new Position(i, j)).getIcon();
 				} catch (InvalidPositionException e)
 				{
 					// TODO Auto-generated catch block

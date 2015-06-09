@@ -9,6 +9,7 @@ import java.util.HashMap;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
+import fr.iutvalence.ardechois.stealthgameproject.view.MapGetter;
 
 /**
  * Map on which the player will play.
@@ -17,7 +18,7 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionExce
  * @version 0.1.0
  *
  */
-public class Map
+public class Map implements MapGetter
 {
 	// Constants
 

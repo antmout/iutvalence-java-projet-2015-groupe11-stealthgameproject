@@ -30,7 +30,14 @@ public enum Blocks
 	 * 
 	 * @value "2"
 	 */
-	GRASS('2', "/grass.png");
+	GRASS('2', "/grass.png"),
+	
+	/**
+	 * Slab block
+	 * 
+	 * @value "3"
+	 */
+	SLAB('3', "/slab.png");
 
 	/**
 	 * Block id, only one character.
