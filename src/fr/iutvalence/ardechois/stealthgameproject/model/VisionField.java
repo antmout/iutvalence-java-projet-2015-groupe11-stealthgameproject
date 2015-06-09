@@ -86,17 +86,51 @@ public class VisionField
 		switch (direction)
 		{
 		case UP:
-
+				if (this.curDirection == Direction.RIGHT || this.curDirection == Direction.LEFT)
+				{
+					int widthTemp = this.width;
+					this.width = this.height;
+					this.height = widthTemp;
+				}
+				this.curDirection = Direction.UP;
+			break;
+		case DOWN:
+			if (this.curDirection == Direction.RIGHT || this.curDirection == Direction.LEFT)
+			{
+				int widthTemp = this.width;
+				this.width = this.height;
+				this.height = widthTemp;
+			}
+			this.curDirection = Direction.DOWN;
+			break;
+		case LEFT:
+			if (this.curDirection == Direction.UP || this.curDirection == Direction.DOWN)
+			{
+				int widthTemp = this.width;
+				this.width = this.height;
+				this.height = widthTemp;
+			}
+			this.curDirection = Direction.LEFT;
+			break;
+		case RIGHT:
+			if (this.curDirection == Direction.UP || this.curDirection == Direction.DOWN)
+			{
+				int widthTemp = this.width;
+				this.width = this.height;
+				this.height = widthTemp;
+			}
+			this.curDirection = Direction.RIGHT;
 			break;
 		}
-		int widthTemp = this.width;
-		this.width = this.height;
-		this.height = widthTemp;
+
 	}
 
 	/**
 	 * Allow to move the vision field.
 	 * 
+	 * @param direction
+	 * @param map
+	 * @throws InvalidPositionException
 	 */
 	public void move(Direction direction, Map map)
 			throws InvalidPositionException
