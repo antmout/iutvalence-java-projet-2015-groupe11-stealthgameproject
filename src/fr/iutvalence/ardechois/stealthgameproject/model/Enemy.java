@@ -23,7 +23,7 @@ public class Enemy
 	 * 
 	 * @see VisionField
 	 */
-	private static VisionField visionField;
+	private VisionField visionField;
 	
 	/**
 	 * True if the enemy see the target.
@@ -102,7 +102,7 @@ public class Enemy
 		if(map.getBlock(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY())) != Blocks.WALL)
 			this.position.move(direction);
 		
-		this.visionField.update(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY()), direction);
+		this.visionField.update(direction);
 	}
 	
 	/**
@@ -118,7 +118,8 @@ public class Enemy
 	
 	public boolean checkVisionField(Player player)
 	{
-		return this.visionField.check(player);
+		this.see =  this.visionField.check(player);
+		return getSee();
 	}
 
 }

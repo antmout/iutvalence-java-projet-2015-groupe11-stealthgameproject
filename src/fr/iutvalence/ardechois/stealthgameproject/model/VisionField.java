@@ -127,10 +127,9 @@ public class VisionField
 
 	}
 	
-	public void update(Position position, Direction direction)
+	public void update(Direction direction)
 	{
-		this.position = position;
-		this.curDirection = direction;
+		rotate(direction);
 	}
 	
 	public boolean check(Player player)
