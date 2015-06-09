@@ -27,6 +27,8 @@ public class DisplayMap extends JPanel
 	public static final String SPAWN_FILENAME = "/spawn.png";
 	/** Filename of the item icon. {@value #ITEM_FILENAME} */
 	public static final String ITEM_FILENAME = "/item.png";
+	
+	public static final String ENEMY_FILENAME = "/enemy.png";
 
 	private int mapWidth;
 	private int mapHeight;
@@ -63,6 +65,7 @@ public class DisplayMap extends JPanel
 		
 		spawnIcon = new ImageIcon(getClass().getResource(SPAWN_FILENAME));
 		itemIcon = new ImageIcon(getClass().getResource(ITEM_FILENAME));
+		enemyIcon = new ImageIcon(getClass().getResource(ENEMY_FILENAME));
 
 		updateGroundGrid();
 
@@ -98,6 +101,10 @@ public class DisplayMap extends JPanel
 		}
 		
 		g.drawImage(((ImageIcon) spawnIcon).getImage(), mapGetter.getSpawnPosition().getX() * rectWidth, mapGetter.getSpawnPosition().getY() * rectHeight, null);
+		
+		// TODO Affichage ennemis dans une boucle parcourant les positions des différents ennemis,
+		// TODO récupérés par l'interface LevelGetter dans une méthode a crée et a implémenter. 
+		// TODO L'image est déja chargée.
 		
 		g.drawImage(((ImageIcon) itemIcon).getImage(), levelGetter.getItemPosition().getX() *rectWidth,  levelGetter.getItemPosition().getY() *rectHeight, null);
 
