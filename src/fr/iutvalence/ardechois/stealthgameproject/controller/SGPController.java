@@ -58,7 +58,7 @@ public class SGPController implements KeyListener
 		if(model.hasWon())
 		{
 			JOptionPane.showMessageDialog(null, "You won the game!");
-			// TODO fermer le jeu
+			this.view.closeWindow();
 		}
 	}
 

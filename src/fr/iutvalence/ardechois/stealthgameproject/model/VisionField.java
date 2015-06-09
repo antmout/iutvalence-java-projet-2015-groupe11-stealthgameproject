@@ -1,7 +1,5 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
-import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
-
 //TODO Javadoc ;)
 public class VisionField
 {

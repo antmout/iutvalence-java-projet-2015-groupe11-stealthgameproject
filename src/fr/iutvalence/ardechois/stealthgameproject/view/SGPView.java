@@ -19,4 +19,10 @@ public class SGPView
 	{
 		gameWindow.repaint();
 	}
+
+	// TODO Javadoc
+	public void closeWindow()
+	{
+		this.gameWindow.dispose();
+	}
 }

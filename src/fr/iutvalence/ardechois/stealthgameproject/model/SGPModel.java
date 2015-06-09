@@ -2,8 +2,6 @@ package fr.iutvalence.ardechois.stealthgameproject.model;
 
 import java.io.File;
 
-import javax.swing.JOptionPane;
-
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
 //TODO Javadoc ;)
