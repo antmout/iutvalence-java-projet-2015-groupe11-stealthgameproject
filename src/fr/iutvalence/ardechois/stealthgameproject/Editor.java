@@ -95,19 +95,20 @@ public class Editor implements MouseListener
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
-		// TODO debug
-		System.out.println("(" + e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE + ";" + e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE + ")");
-		
-		Position mousePositionBlock = new Position(e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE, e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE);
-		try
+		if(e.getButton() == MouseEvent.BUTTON1)
 		{
-			map.setBlock(mousePositionBlock, Blocks.WALL);
-		} catch (InvalidPositionException e1)
-		{
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			// TODO debug
+			System.out.println("(" + e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE + ";" + e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE + ")");
+			
+			Position mousePositionBlock = new Position(e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE, e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE);
+			try
+			{
+				map.setBlock(mousePositionBlock, Blocks.WALL);
+			} catch (InvalidPositionException e1)
+			{
+				System.out.println("Mouse button pressed out of map.");
+			}
 		}
-		
 	}
 
 	@Override

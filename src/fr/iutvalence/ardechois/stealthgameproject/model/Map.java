@@ -152,7 +152,7 @@ public class Map
 	 */
 	public void setBlock(Position position, Blocks block) throws InvalidPositionException
 	{
-		if (position.getX() < 0 || position.getY() < 0 || position.getX() > getMapWidth() || position.getY() > getMapHeight())
+		if (position.getX() < 0 || position.getY() < 0 || position.getX() >= getMapWidth() || position.getY() >= getMapHeight())
 		{
 			throw new InvalidPositionException();
 		}
