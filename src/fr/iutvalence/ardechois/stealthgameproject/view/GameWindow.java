@@ -30,8 +30,9 @@ public class GameWindow extends JFrame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		this.setTitle("Stealth Game Project: editor");
+		this.setTitle("Stealth Game Project");
 
 		JSplitPane mainPanel = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		mainPanel.setEnabled(false);

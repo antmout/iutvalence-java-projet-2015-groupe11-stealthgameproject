@@ -5,8 +5,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
-import fr.iutvalence.ardechois.stealthgameproject.model.Level;
-
 //TODO Javadoc ;)
 public class EditorWindow extends JFrame
 {
@@ -29,6 +27,7 @@ public class EditorWindow extends JFrame
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setTitle("Stealth Game Project: editor");
 

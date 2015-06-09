@@ -1,7 +1,6 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
-import fr.iutvalence.ardechois.stealthgameproject.controller.SGPController;
-import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
+import fr.iutvalence.ardechois.stealthgameproject.view.MainMenu;
 
 /**
  * Allow to launch the application.
@@ -14,7 +13,6 @@ public class GameLauncher
 	// TODO Javadoc ;)
 	public static void main(String[] args)
 	{
-		SGPController game = new SGPController();
-		//Editor editor = new Editor();
+		MainMenu menu = new MainMenu();
 	}
 }
