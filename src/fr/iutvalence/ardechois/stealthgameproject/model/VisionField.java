@@ -132,12 +132,13 @@ public class VisionField
 	
 	public boolean check(Player player)
 	{
-		for (int i = 0; i != this.width; i++)
+		for (int x = 0; x < this.width; x++)
 		{
-			for (int j = 0; j != this.height; j++)
+			for (int y = 1; y < this.height; y++)
 			{
-				Position squarePosition = new Position(this.position.getX() + i, this.position.getY() + j);
-				if (squarePosition == player.getPosition())
+				Position squarePositionRight = new Position(this.position.getX() + x/2 , this.position.getY() + y );
+				Position squarePositionLeft = new Position(this.position.getX() - x/2 , this.position.getY() + y );
+				if (squarePositionRight.equals(player.getPosition()) || squarePositionLeft.equals(player.getPosition()))
 				{
 					return true;
 				}

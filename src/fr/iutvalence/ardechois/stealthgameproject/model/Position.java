@@ -73,4 +73,12 @@ public class Position
 		this.x = x;
 		this.y = y;
 	}
+	
+	@Override
+	public boolean equals(Object position)
+	{
+		if (this.x == ((Position) position).getX() && this.y == ((Position) position).getY())
+			return true;
+		return false;
+	}
 }

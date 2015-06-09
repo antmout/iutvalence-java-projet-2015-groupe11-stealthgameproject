@@ -51,7 +51,7 @@ public class Level implements LevelGetter
     {
     	currentItem = new Item(new Position(0, 0));
     	enemyList = new ArrayList<Enemy>();
-    	enemyList.add(new Enemy(new Position(10, 10), Direction.UP));
+    	enemyList.add(new Enemy(new Position(5, 5), Direction.UP));
     	enemyList.add(new Enemy(new Position(12, 12), Direction.DOWN));
     	currentMap = new Map(file, currentItem);
     }
