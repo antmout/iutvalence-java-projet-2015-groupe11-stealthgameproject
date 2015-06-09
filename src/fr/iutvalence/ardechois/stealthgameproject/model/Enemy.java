@@ -1,5 +1,7 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
+import java.util.Random;
+
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
 /**
@@ -120,6 +122,19 @@ public class Enemy
 	{
 		this.see =  this.visionField.check(player);
 		return getSee();
+	}
+
+	public void randomMove(Map map)
+	{
+		Random random = new Random();
+		
+		try
+		{
+			move(Direction.getDirection(random.nextInt(4)), map);
+		} catch (InvalidPositionException e)
+		{
+			// Do nothing
+		}
 	}
 
 }

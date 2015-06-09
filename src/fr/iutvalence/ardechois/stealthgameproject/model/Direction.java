@@ -68,4 +68,9 @@ public enum Direction
 	{
 		return y;
 	}
+	
+	public static Direction getDirection(int id)
+	{
+		return values()[id];
+	}
 }

@@ -2,6 +2,8 @@ package fr.iutvalence.ardechois.stealthgameproject.view;
 
 import java.awt.event.KeyListener;
 
+import javax.swing.JFrame;
+
 //TODO Javadoc ;)
 public class SGPView
 {
@@ -24,5 +26,7 @@ public class SGPView
 	public void closeWindow()
 	{
 		this.gameWindow.dispose();
+		// Application don't stop if we don't exit it.
+		System.exit(0);
 	}
 }

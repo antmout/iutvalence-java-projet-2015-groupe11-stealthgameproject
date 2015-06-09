@@ -137,10 +137,10 @@ public class VisionField
 			for (int j = 0; j != this.height; j++)
 			{
 				Position squarePosition = new Position(this.position.getX() + i, this.position.getY() + j);
-					if (squarePosition == player.getPosition())
-					{
-						return true;
-					}
+				if (squarePosition == player.getPosition())
+				{
+					return true;
+				}
 			}
 		}
 		return false;

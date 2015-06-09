@@ -34,6 +34,8 @@ public class SGPModel
 		{
 			player.move(direction, currentLevel.getCurrentMap());
 			
+			currentLevel.moveEnemies();
+			
 			if(currentLevel.checkAllVisionFields(player))
 			{
 				System.out.println("perdu");

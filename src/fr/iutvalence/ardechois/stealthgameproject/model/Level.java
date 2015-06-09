@@ -127,4 +127,13 @@ public class Level implements LevelGetter
 		
 		return positions;
 	}
+
+	public void moveEnemies()
+	{
+		for(Enemy enemy : enemyList)
+		{
+			enemy.randomMove(currentMap);
+		}
+		
+	}
 }

@@ -41,8 +41,6 @@ public class GameWindow extends JFrame
 		mainPanel.add(new DisplayMap(levelGetter, mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
 		
 		this.addKeyListener(keyListener);
-
-		// TODO Icon icon = new ImageIcon(getClass().getResource("/test.png"));
 		
 		this.setContentPane(mainPanel);
 
