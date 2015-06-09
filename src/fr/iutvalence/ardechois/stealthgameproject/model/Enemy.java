@@ -25,13 +25,28 @@ public class Enemy
 	 */
 	private static VisionField visionField;
 
+	
 	/**
 	 * Constructor with a position parameter.
 	 * 
 	 * @param position
 	 *            : The starting enemy position.
+	 */
+	public Enemy(Position position, Direction initDir)
+	{
+		this.position = position;
+		this.visionField = new VisionField(position, initDir);
+	}
+	
+	/**
+	 * Constructor with position and visionField parameters.
+	 * 
+	 * @param position
+	 *            : The starting enemy position.
 	 * @param visionField
 	 *            : The enemy vision field.
+	 * @param initDir
+	 * 				The initial direction of the initial vision field.
 	 */
 	public Enemy(Position position, VisionField visionField)
 	{
@@ -80,6 +95,8 @@ public class Enemy
 		
 		if(map.getBlock(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY())) != Blocks.WALL)
 			this.position.move(direction);
+		
+		this.visionField.move(direction, map);
 	}
 
 }
