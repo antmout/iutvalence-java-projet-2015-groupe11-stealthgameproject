@@ -3,6 +3,9 @@ package fr.iutvalence.ardechois.stealthgameproject.controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.HashMap;
+
+import javax.swing.JOptionPane;
+
 import fr.iutvalence.ardechois.stealthgameproject.model.Direction;
 import fr.iutvalence.ardechois.stealthgameproject.model.SGPModel;
 import fr.iutvalence.ardechois.stealthgameproject.view.SGPView;
@@ -52,6 +55,11 @@ public class SGPController implements KeyListener
 	public void move(Direction direction)
 	{
 		model.move(direction);
+		if(model.hasWon())
+		{
+			JOptionPane.showMessageDialog(null, "You won the game!");
+			// TODO fermer le jeu
+		}
 	}
 
 	@Override
@@ -69,19 +77,19 @@ public class SGPController implements KeyListener
 		switch (key)
 		{
 			case KeyEvent.VK_UP :
-				this.model.move(Direction.UP);
+				this.move(Direction.UP);
 				break;
 
 			case KeyEvent.VK_DOWN :
-				this.model.move(Direction.DOWN);
+				this.move(Direction.DOWN);
 				break;
 
 			case KeyEvent.VK_LEFT :
-				this.model.move(Direction.LEFT);
+				this.move(Direction.LEFT);
 				break;
 
 			case KeyEvent.VK_RIGHT :
-				this.model.move(Direction.RIGHT);
+				this.move(Direction.RIGHT);
 				break;
 		}
 

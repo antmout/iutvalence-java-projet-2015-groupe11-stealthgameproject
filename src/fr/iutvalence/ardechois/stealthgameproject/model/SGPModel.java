@@ -2,6 +2,8 @@ package fr.iutvalence.ardechois.stealthgameproject.model;
 
 import java.io.File;
 
+import javax.swing.JOptionPane;
+
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
 //TODO Javadoc ;)
@@ -33,10 +35,14 @@ public class SGPModel
 		try
 		{
 			player.move(direction, currentLevel.getCurrentMap());
+			
 			if(currentLevel.checkAllVisionFields(player))
 			{
 				System.out.println("perdu");
 			}
+			
+			currentLevel.updateItem(player);
+
 		} catch (InvalidPositionException e)
 		{
 			// TODO Auto-generated catch block
@@ -44,6 +50,11 @@ public class SGPModel
 		}
 	}
 	
+	public boolean hasWon()
+	{
+		return currentLevel.hasWon(player);
+	}
+
 	// TODO Javadoc ;)
 	public Player getPlayer()
 	{

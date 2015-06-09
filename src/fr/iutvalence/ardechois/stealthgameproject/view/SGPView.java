@@ -18,6 +18,5 @@ public class SGPView
 	public void updateWindow()
 	{
 		gameWindow.repaint();
-		
 	}
 }

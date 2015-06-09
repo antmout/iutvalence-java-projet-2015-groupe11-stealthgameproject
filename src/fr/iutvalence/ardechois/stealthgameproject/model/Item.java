@@ -69,5 +69,11 @@ public class Item
 	{
 		return taken;
 	}
+	
+	public void setTaken(Position playerPosition)
+	{
+		this.taken = true;
+		this.position = playerPosition;
+	}
 
 }

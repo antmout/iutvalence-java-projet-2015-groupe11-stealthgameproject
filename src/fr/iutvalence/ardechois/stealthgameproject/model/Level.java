@@ -105,4 +105,17 @@ public class Level implements LevelGetter
 		return false;
 		
 	}
+
+	public void updateItem(Player player)
+	{
+		if(player.getPosition().getX() == currentItem.getPosition().getX() && player.getPosition().getY() == currentItem.getPosition().getY())
+		{
+			currentItem.setTaken(player.getPosition());
+		}
+	}
+
+	public boolean hasWon(Player player)
+	{
+		return (currentItem.isTaken() && (currentMap.getSpawnPosition().getX() == player.getPosition().getX() && currentMap.getSpawnPosition().getY() == player.getPosition().getY()));
+	}
 }
