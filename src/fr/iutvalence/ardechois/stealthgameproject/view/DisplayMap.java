@@ -2,9 +2,12 @@ package fr.iutvalence.ardechois.stealthgameproject.view;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 
@@ -102,9 +105,12 @@ public class DisplayMap extends JPanel
 		
 		g.drawImage(((ImageIcon) spawnIcon).getImage(), mapGetter.getSpawnPosition().getX() * rectWidth, mapGetter.getSpawnPosition().getY() * rectHeight, null);
 		
-		// TODO Affichage ennemis dans une boucle parcourant les positions des différents ennemis,
-		// TODO récupérés par l'interface LevelGetter dans une méthode a crée et a implémenter. 
-		// TODO L'image est déja chargée.
+		ArrayList<Position> enemiesPositions = levelGetter.getEnemiesPositions();
+		
+		for(Position currentPos : enemiesPositions)
+		{
+			g.drawImage(((ImageIcon) enemyIcon).getImage(), currentPos.getX() * rectWidth, currentPos.getY() * rectHeight, null);
+		}
 		
 		g.drawImage(((ImageIcon) itemIcon).getImage(), levelGetter.getItemPosition().getX() *rectWidth,  levelGetter.getItemPosition().getY() *rectHeight, null);
 

@@ -65,7 +65,7 @@ public class SGPController implements KeyListener
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
-		// TODO Auto-generated method stub
+		// / Do nothing
 
 	}
 	
@@ -97,10 +97,8 @@ public class SGPController implements KeyListener
 	}
 	
 	@Override
-	@Deprecated
 	public void keyReleased(KeyEvent e)
 	{
-		// TODO Useless ;)
-
+		// / Do nothing
 	}
 }

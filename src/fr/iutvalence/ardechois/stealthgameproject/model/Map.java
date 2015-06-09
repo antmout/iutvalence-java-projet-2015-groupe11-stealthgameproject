@@ -107,7 +107,6 @@ public class Map implements MapGetter
 			loadMapFromFile(file, currentItem);
 		} catch (InvalidMapSizeException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -118,6 +118,16 @@ public class Level implements LevelGetter
 	{
 		return (currentItem.isTaken() && (currentMap.getSpawnPosition().getX() == player.getPosition().getX() && currentMap.getSpawnPosition().getY() == player.getPosition().getY()));
 	}
-	
-	// TODO implémenter méthode pour recup pos de tous les ennemis
+
+	@Override
+	public ArrayList<Position> getEnemiesPositions()
+	{
+		ArrayList<Position> positions = new ArrayList<Position>();
+		for(Enemy enemy : enemyList)
+		{
+			positions.add(enemy.getPosition());
+		}
+		
+		return positions;
+	}
 }

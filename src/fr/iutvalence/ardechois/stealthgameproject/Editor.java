@@ -71,7 +71,6 @@ public class Editor implements MouseListener
 		}
 		catch (InvalidPositionException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -100,21 +99,21 @@ public class Editor implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
+		// Do nothing
 
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
+		// / Do nothing
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
+		// / Do nothing
 
 	}
 
@@ -165,7 +164,7 @@ public class Editor implements MouseListener
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
-		// TODO Auto-generated method stub
+		// / Do nothing
 
 	}
 }
