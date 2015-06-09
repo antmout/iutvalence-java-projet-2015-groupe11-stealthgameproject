@@ -19,18 +19,23 @@ import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
  */
 public class Editor implements MouseListener
 {
-	/** 
-	 * The map which is edited. 
+	
+	public static final String DEFAULT_MAP_NAME = "tempMap.txt";
+	
+	/**
+	 * The map which is edited.
 	 * 
 	 * @see Map
 	 */
 	private Map map;
-	/** 
-	 * The Editor window. 
+	/**
+	 * The Editor window.
 	 * 
 	 * @see EditorWindow
 	 */
 	private EditorWindow editorWindow;
+	
+	private File file;
 
 	/**
 	 * Default constructor.
@@ -39,7 +44,27 @@ public class Editor implements MouseListener
 	{
 		try
 		{
-			this.map = new Map("map2.txt");
+			this.file = new File(DEFAULT_MAP_NAME);
+			this.map = new Map(this.file);
+			this.editorWindow = new EditorWindow(map, this);
+		} catch (InvalidMapSizeException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Editor(String filename)
+	{
+		this(new File(filename));
+	}
+	
+	public Editor(File file)
+	{
+		try
+		{
+			this.file = file;
+			this.map = new Map(this.file);
 			this.editorWindow = new EditorWindow(map, this);
 		} catch (InvalidMapSizeException e)
 		{
@@ -63,8 +88,18 @@ public class Editor implements MouseListener
 	/**
 	 * Save the edited map in a target file.
 	 * 
+	 * @param filename
+	 */
+	public void saveMap(String filename)
+	{
+		saveMap(new File(filename));
+	}
+
+	/**
+	 * Save the edited map in a target file.
+	 * 
 	 * @param file
-	 * 			The target file in which the map will be saved.
+	 *            The target file in which the map will be saved.
 	 */
 	public void saveMap(File file)
 	{
@@ -75,39 +110,47 @@ public class Editor implements MouseListener
 	public void mouseClicked(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
-		if(e.getButton() == MouseEvent.BUTTON1)
+		switch (e.getButton())
 		{
-			// TODO debug
-			System.out.println("(" + e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE + ";" + e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE + ")");
-			
-			Position mousePositionBlock = new Position(e.getX()/EditorWindow.PREFERRED_BLOCK_SIZE, e.getY()/EditorWindow.PREFERRED_BLOCK_SIZE);
+		case MouseEvent.BUTTON1:
+			Position mousePositionBlock = new Position(e.getX() / EditorWindow.PREFERRED_BLOCK_SIZE, e.getY() / EditorWindow.PREFERRED_BLOCK_SIZE);
 			try
 			{
-				map.setBlock(mousePositionBlock, Blocks.WALL);
+				map.setBlock(mousePositionBlock, map.getBlock(mousePositionBlock).getNext());
 			} catch (InvalidPositionException e1)
 			{
 				System.out.println("Mouse button pressed out of map.");
 			}
+
+			editorWindow.invalidate();
+			editorWindow.repaint();
+			editorWindow.validate();
+			break;
+
+		case MouseEvent.BUTTON3:
+			saveMap(file);
+			System.out.println("Map saved in " + file.getName());
+			break;
 		}
 	}
 
@@ -115,6 +158,6 @@ public class Editor implements MouseListener
 	public void mouseReleased(MouseEvent e)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 }

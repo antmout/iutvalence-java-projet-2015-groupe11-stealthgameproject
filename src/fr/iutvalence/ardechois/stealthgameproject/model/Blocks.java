@@ -62,4 +62,9 @@ public enum Blocks
 	{
 		return this.icon;
 	}
+	
+	public Blocks getNext()
+	{
+		return values()[(ordinal()+1) % values().length];
+	}
 }
