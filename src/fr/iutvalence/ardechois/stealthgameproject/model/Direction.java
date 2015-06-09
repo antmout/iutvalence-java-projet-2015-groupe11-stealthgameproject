@@ -13,16 +13,16 @@ public enum Direction
     /**
      * .
      * 
-     * @value "0,1"
+     * @value "0,-1"
      */
-    UP(0, 1),
+    UP(0, -1),
 
     /**
      * .
      * 
-     * @value "0,-1"
+     * @value "0,+1"
      */
-    DOWN(0, -1),
+    DOWN(0, 1),
 
     /**
      * .

@@ -46,11 +46,11 @@ public class Player implements PlayerGetter
 		switch (direction)
 		{
 		case UP:
-			if (this.position.getY() + 1 > map.getMapHeight())
+			if (this.position.getY() - 1 < 0)
 				throw new InvalidPositionException();
 			break;
 		case DOWN:
-			if (this.position.getY() - 1 < 0)
+			if (this.position.getY() + 1 >= map.getMapHeight())
 				throw new InvalidPositionException();
 			break;
 		case LEFT:
@@ -58,7 +58,7 @@ public class Player implements PlayerGetter
 				throw new InvalidPositionException();
 			break;
 		case RIGHT:
-			if (this.position.getX() + 1 > map.getMapWidth())
+			if (this.position.getX() + 1 >= map.getMapWidth())
 				throw new InvalidPositionException();
 			break;
 		}

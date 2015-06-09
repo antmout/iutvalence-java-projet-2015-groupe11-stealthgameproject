@@ -11,4 +11,10 @@ public class SGPView
 	{
 		gameWindow = new GameWindow(mapGetter, playerGetter, keyListener);
 	}
+
+	public void updateWindow()
+	{
+		gameWindow.repaint();
+		
+	}
 }

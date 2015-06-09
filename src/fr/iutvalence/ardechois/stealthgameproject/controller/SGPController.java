@@ -49,60 +49,33 @@ public class SGPController implements KeyListener
 
 	public void keyPressed(KeyEvent e)
 	{
-		System.out.println("test");
 		int key = e.getKeyCode();
 
 		switch (key)
 		{
 			case KeyEvent.VK_UP :
-				System.out.println("Move up");
-				// TODO
+				this.model.move(Direction.UP);
 				break;
 
 			case KeyEvent.VK_DOWN :
-				System.out.println("Move down");
-				// TODO
+				this.model.move(Direction.DOWN);
 				break;
 
 			case KeyEvent.VK_LEFT :
-				System.out.println("Move left");
-				// TODO
+				this.model.move(Direction.LEFT);
 				break;
 
 			case KeyEvent.VK_RIGHT :
-				System.out.println("Move right");
-				// TODO
+				this.model.move(Direction.RIGHT);
 				break;
 		}
+		
+		this.view.updateWindow();
 	}
 
 	public void keyReleased(KeyEvent e)
 	{
-		int key = e.getKeyCode();
-
-		switch (key)
-		{
-			case KeyEvent.VK_UP :
-				System.out.println("Stop moving up");
-				// TODO
-				break;
-
-			case KeyEvent.VK_DOWN :
-				System.out.println("Stop moving down");
-				// TODO
-				break;
-
-			case KeyEvent.VK_LEFT :
-				System.out.println("Stop moving left");
-				// TODO
-				break;
-
-			case KeyEvent.VK_RIGHT :
-				System.out.println("Stop moving right");
-				// TODO
-				break;
-
-		}
+		// TODO Useless ;)
 
 	}
 }

@@ -1,11 +1,8 @@
 package fr.iutvalence.ardechois.stealthgameproject.view;
 
-import java.awt.GridLayout;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 public class GameWindow extends JFrame 
@@ -36,7 +33,7 @@ public class GameWindow extends JFrame
 		
 		mainPanel.add(new DisplayMap(mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
 		
-		mainPanel.addKeyListener(keyListener);
+		this.addKeyListener(keyListener);
 
 		// TODO Icon icon = new ImageIcon(getClass().getResource("/test.png"));
 		
