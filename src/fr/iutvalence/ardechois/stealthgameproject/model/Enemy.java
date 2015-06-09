@@ -45,22 +45,6 @@ public class Enemy
 		this.see = false;
 	}
 	
-	/**
-	 * Constructor with position and visionField parameters.
-	 * 
-	 * @param position
-	 *            : The starting enemy position.
-	 * @param visionField
-	 *            : The enemy vision field.
-	 * @param initDir
-	 * 				The initial direction of the initial vision field.
-	 */
-	public Enemy(Position position, VisionField visionField)
-	{
-		this.position = position;
-		this.visionField = visionField;
-		this.see = false;
-	}
 
 	/**
 	 * Getter for the attribute position.
