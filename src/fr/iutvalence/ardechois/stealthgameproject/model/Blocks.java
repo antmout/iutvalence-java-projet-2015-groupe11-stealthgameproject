@@ -30,18 +30,25 @@ public enum Blocks
 	WALL('1', "/wall.png"),
 	
 	/**
-	 * Grass block
+	 * Grass block.
 	 * 
 	 * @value "2"
 	 */
 	GRASS('2', "/grass.png"),
 	
 	/**
-	 * Slab block
+	 * Slab block.
 	 * 
 	 * @value "3"
 	 */
-	SLAB('3', "/slab.png");
+	SLAB('3', "/slab.png"),
+	
+	/**
+	 * Enemy entity.
+	 * 
+	 * @value "4"
+	 */
+	ENEMY('4', "/enemy.png");
 	
 	/**
 	 * Block id, only one character.

@@ -39,6 +39,7 @@ public class DisplayMap extends JPanel
 	private Icon playerIcon;
 	private Icon spawnIcon;
 	private Icon itemIcon;
+	private Icon enemyIcon;
 
 	/**
 	 * Constructor who allow the display of mapGetter, playerGetter depending on preferredBlockSize.

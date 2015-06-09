@@ -52,7 +52,7 @@ public class Level implements LevelGetter
     public Level(File file)
     {
     	currentItem = new Item(new Position(0, 0));
-        enemyList = new ArrayList<Enemy>();
+    	enemyList = new ArrayList<Enemy>();
     	currentMap = new Map(file, currentItem);
     }
     
