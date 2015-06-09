@@ -8,6 +8,7 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeExcep
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Blocks;
 import fr.iutvalence.ardechois.stealthgameproject.model.Map;
+import fr.iutvalence.ardechois.stealthgameproject.model.Player;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
 
@@ -46,7 +47,7 @@ public class Editor implements MouseListener
 		{
 			this.file = new File(DEFAULT_MAP_NAME);
 			this.map = new Map(this.file);
-			this.editorWindow = new EditorWindow(map, this);
+			this.editorWindow = new EditorWindow(map, null, this);
 		} catch (InvalidMapSizeException e)
 		{
 			// TODO Auto-generated catch block
@@ -65,7 +66,7 @@ public class Editor implements MouseListener
 		{
 			this.file = file;
 			this.map = new Map(this.file);
-			this.editorWindow = new EditorWindow(map, this);
+			this.editorWindow = new EditorWindow(map, null, this);
 		} catch (InvalidMapSizeException e)
 		{
 			// TODO Auto-generated catch block

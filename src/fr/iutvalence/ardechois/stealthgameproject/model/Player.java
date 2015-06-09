@@ -1,8 +1,9 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
+import fr.iutvalence.ardechois.stealthgameproject.view.PlayerGetter;
 
-public class Player
+public class Player implements PlayerGetter
 {
 	/**
 	 * The character position

@@ -38,7 +38,7 @@ public enum Blocks
 	 * @value "3"
 	 */
 	SLAB('3', "/slab.png");
-
+	
 	/**
 	 * Block id, only one character.
 	 */

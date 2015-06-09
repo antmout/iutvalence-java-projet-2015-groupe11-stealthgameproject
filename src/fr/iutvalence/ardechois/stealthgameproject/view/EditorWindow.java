@@ -5,8 +5,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
-import fr.iutvalence.ardechois.stealthgameproject.model.Map;
-
 public class EditorWindow extends JFrame
 {
 	public static final int WINDOW_WIDTH = 808;
@@ -19,7 +17,7 @@ public class EditorWindow extends JFrame
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditorWindow(Map map, MouseListener mouseListener)
+	public EditorWindow(MapGetter map, PlayerGetter playerGetter, MouseListener mouseListener)
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -31,7 +29,7 @@ public class EditorWindow extends JFrame
 		mainPanel.setEnabled(false);
 		mainPanel.setDividerSize(0);
 		
-		mainPanel.add(new DisplayMap(map, PREFERRED_BLOCK_SIZE));
+		mainPanel.add(new DisplayMap(map, playerGetter, PREFERRED_BLOCK_SIZE));
 		
 		mainPanel.addMouseListener(mouseListener);
 		

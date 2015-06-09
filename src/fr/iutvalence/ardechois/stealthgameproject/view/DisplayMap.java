@@ -16,23 +16,31 @@ public class DisplayMap extends JPanel
 
 	public static final int NUM_COLS = 50;
 	public static final int NUM_ROWS = 40;
+	
+	public static final String PLAYER_FILENAME = "/test.png";
 
 	private int mapWidth;
 	private int mapHeight;
 	private int preferredBlockSize;
 	private MapGetter mapGetter;
+	private PlayerGetter playerGetter;
 
 	private Icon[][] groundGrid;
+	private Icon playerIcon;
 
-	public DisplayMap(MapGetter mapGetter, int preferredBlockSize)
+	public DisplayMap(MapGetter mapGetter, PlayerGetter playerGetter, int preferredBlockSize)
 	{
 		this.mapGetter = mapGetter;
+		this.playerGetter = playerGetter;
 		
 		this.mapWidth = mapGetter.getMapWidth();
 		this.mapHeight = mapGetter.getMapHeight();
 		this.preferredBlockSize = preferredBlockSize;
 
-		updategroundGrid();
+		if(playerGetter != null)
+			playerIcon = new ImageIcon(getClass().getResource(PLAYER_FILENAME));
+		
+		updateGroundGrid();
 		
 		int preferredWidth = mapWidth * this.preferredBlockSize;
 		int preferredHeight = mapWidth * this.preferredBlockSize;
@@ -50,7 +58,7 @@ public class DisplayMap extends JPanel
 		int rectWidth = this.preferredBlockSize;
 		int rectHeight = this.preferredBlockSize;
 		
-		updategroundGrid();
+		updateGroundGrid();
 
 		for (int i = 0; i < mapWidth; i++)
 		{
@@ -64,9 +72,15 @@ public class DisplayMap extends JPanel
 					g.drawImage(((ImageIcon) groundIcon).getImage(), x, y, null);
 			}
 		}
+		
+		if(playerGetter != null)
+		{
+			Position playerPosition = new Position(playerGetter.getPosition().getX()*rectWidth, playerGetter.getPosition().getY()*rectHeight);
+			g.drawImage(((ImageIcon) playerIcon).getImage(), playerPosition.getX(), playerPosition.getY(), null);
+		}
 	}
 	
-	private void updategroundGrid()
+	private void updateGroundGrid()
 	{
 		this.groundGrid = new Icon[mapWidth][mapHeight];
 		for (int i = 0; i < mapWidth; i++)
@@ -79,7 +93,6 @@ public class DisplayMap extends JPanel
 						this.groundGrid[i][j] = mapGetter.getBlock(new Position(i, j)).getIcon();
 				} catch (InvalidPositionException e)
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
