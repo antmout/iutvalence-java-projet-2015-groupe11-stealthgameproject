@@ -95,15 +95,12 @@ public class Level implements LevelGetter
 	
 	public boolean checkAllVisionFields(Player player)
 	{
-		Iterator<Enemy> iterator = this.enemyList.iterator();
-		
-		while(iterator.hasNext())
+		for(Enemy enemy : enemyList)
 		{
-			if(iterator.next().checkVisionField(player))
+			if(enemy.checkVisionField(player))
 				return true;
 		}
 		return false;
-		
 	}
 
 	public void updateItem(Player player)
