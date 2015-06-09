@@ -1,8 +1,11 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Blocks;
@@ -136,18 +139,25 @@ public class Editor implements MouseListener
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
+		Position mousePositionBlock = new Position(e.getX() / EditorWindow.PREFERRED_BLOCK_SIZE, e.getY()
+				/ EditorWindow.PREFERRED_BLOCK_SIZE);
 		switch (e.getButton())
 		{
 			case MouseEvent.BUTTON1 :
-				Position mousePositionBlock = new Position(e.getX() / EditorWindow.PREFERRED_BLOCK_SIZE, e.getY()
-						/ EditorWindow.PREFERRED_BLOCK_SIZE);
-				try
+				if(!e.isAltDown() && !e.isControlDown())
 				{
-					map.setBlock(mousePositionBlock, map.getBlock(mousePositionBlock).getNext());
+					try
+					{
+						map.setBlock(mousePositionBlock, map.getBlock(mousePositionBlock).getNext());
+					}
+					catch (InvalidPositionException e1)
+					{
+						System.out.println("Mouse button pressed out of map.");
+					}
 				}
-				catch (InvalidPositionException e1)
+				else if(e.isAltDown() && !e.isControlDown())
 				{
-					System.out.println("Mouse button pressed out of map.");
+					map.setSpawnPosition(mousePositionBlock);
 				}
 				break;
 

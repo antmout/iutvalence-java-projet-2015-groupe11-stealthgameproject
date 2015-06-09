@@ -22,7 +22,7 @@ public class Player implements PlayerGetter
 	 */
 	public Player(Position position)
 	{
-		this.position = position;
+		this.position = new Position(position.getX(), position.getY());
 	}
 
 	/**

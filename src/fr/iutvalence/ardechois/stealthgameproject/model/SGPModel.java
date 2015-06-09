@@ -14,8 +14,8 @@ public class SGPModel
 	// TODO Javadoc ;)
 	public SGPModel()
 	{
-		player = new Player(new Position(0, 0));
 		currentLevel = new Level();
+		player = new Player(currentLevel.getCurrentMap().getSpawnPosition());
 	}
 
 	// TODO Javadoc ;)

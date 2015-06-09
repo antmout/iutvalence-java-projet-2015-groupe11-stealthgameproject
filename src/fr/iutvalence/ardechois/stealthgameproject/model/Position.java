@@ -68,7 +68,7 @@ public class Position
 	 * @param x
 	 * @param y
 	 */
-	private void setPosition(int x, int y)
+	public void setPosition(int x, int y)
 	{
 		this.x = x;
 		this.y = y;

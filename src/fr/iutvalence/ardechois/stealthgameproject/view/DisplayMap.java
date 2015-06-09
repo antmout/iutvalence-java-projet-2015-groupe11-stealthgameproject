@@ -22,7 +22,9 @@ public class DisplayMap extends JPanel
 	public static final int NUM_ROWS = 40;
 
 	/** Filename of the player icon. {@value #PLAYER_FILENAME} */
-	public static final String PLAYER_FILENAME = "/test.png";
+	public static final String PLAYER_FILENAME = "/player.png";
+	/** Filename of the spawn icon. {@value #SPAWN_FILENAME} */
+	public static final String SPAWN_FILENAME = "/spawn.png";
 
 	private int mapWidth;
 	private int mapHeight;
@@ -32,6 +34,7 @@ public class DisplayMap extends JPanel
 
 	private Icon[][] groundGrid;
 	private Icon playerIcon;
+	private Icon spawnIcon;
 
 	/**
 	 * Constructor who allow the display of mapGetter, playerGetter depending on preferredBlockSize.
@@ -50,6 +53,8 @@ public class DisplayMap extends JPanel
 
 		if (playerGetter != null)
 			playerIcon = new ImageIcon(getClass().getResource(PLAYER_FILENAME));
+		
+		spawnIcon = new ImageIcon(getClass().getResource(SPAWN_FILENAME));
 
 		updateGroundGrid();
 
@@ -83,6 +88,8 @@ public class DisplayMap extends JPanel
 					g.drawImage(((ImageIcon) groundIcon).getImage(), x, y, null);
 			}
 		}
+		
+		g.drawImage(((ImageIcon) spawnIcon).getImage(), mapGetter.getSpawnPosition().getX() * rectWidth, mapGetter.getSpawnPosition().getY() * rectHeight, null);
 
 		if (playerGetter != null)
 		{

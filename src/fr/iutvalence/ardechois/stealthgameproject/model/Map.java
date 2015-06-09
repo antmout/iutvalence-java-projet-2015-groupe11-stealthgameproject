@@ -53,6 +53,11 @@ public class Map implements MapGetter
 	 */
 	private HashMap<Character, Blocks> hashMap;
 
+	/**
+	 * Player spawn position.
+	 */
+	private Position spawnPosition;
+
 	// Constructors
 
 	// Empty maps
@@ -61,20 +66,22 @@ public class Map implements MapGetter
 	{
 		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT);
 	}
-	
+
 	// TODO Javadoc ;)
 	public Map(int width, int height) throws InvalidMapSizeException
 	{
 		setHashMap();
 		
-		if(width < 0 || height < 0 || width > MAX_MAP_WIDTH || height > MAX_MAP_HEIGHT)
+		spawnPosition = new Position(0, 0);
+
+		if (width < 0 || height < 0 || width > MAX_MAP_WIDTH || height > MAX_MAP_HEIGHT)
 			throw new InvalidMapSizeException();
-		
+
 		this.grid = new Blocks[width][height];
-		
-		for(int x=0; x<getMapWidth(); x++)
+
+		for (int x = 0; x < getMapWidth(); x++)
 		{
-			for(int y=0; y<getMapHeight(); y++)
+			for (int y = 0; y < getMapHeight(); y++)
 			{
 				this.grid[x][y] = Blocks.FLOOR;
 			}
@@ -87,11 +94,14 @@ public class Map implements MapGetter
 	{
 		this(new File(filename));
 	}
-	
+
 	// TODO Javadoc ;)
 	public Map(File file) throws InvalidMapSizeException
 	{
 		setHashMap();
+		
+		spawnPosition = new Position(0, 0);
+		
 		loadMapFromFile(file);
 	}
 
@@ -206,6 +216,8 @@ public class Map implements MapGetter
 					grid[columnNumber][lineNumber] = hashMap.get((char) fileReader.read());
 				}
 			}
+			
+			spawnPosition.setPosition((int) fileReader.read(), (int) fileReader.read());
 
 			fileReader.close();
 
@@ -250,6 +262,9 @@ public class Map implements MapGetter
 						fileWriter.write(grid[columnNumber][lineNumber].getId());
 				}
 			}
+			
+			fileWriter.write(spawnPosition.getX());
+			fileWriter.write(spawnPosition.getY());
 
 			fileWriter.close();
 
@@ -269,6 +284,24 @@ public class Map implements MapGetter
 				grid[columnNumber][lineNumber] = Blocks.GRASS;
 			}
 		}
-		
+
+	}
+
+	/**
+	 * Get the player spawn position.
+	 * @return this.spawnPosition
+	 */
+	public Position getSpawnPosition()
+	{
+		return this.spawnPosition;
+	}
+
+	/**
+	 * Set the player spawn position.
+	 * @param spawnPosition
+	 */
+	public void setSpawnPosition(Position spawnPosition)
+	{
+		this.spawnPosition = spawnPosition;
 	}
 }
