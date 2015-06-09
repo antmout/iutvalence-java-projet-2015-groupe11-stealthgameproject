@@ -33,6 +33,10 @@ public class SGPModel
 		try
 		{
 			player.move(direction, currentLevel.getCurrentMap());
+			if(currentLevel.checkAllVisionFields(player))
+			{
+				System.out.println("perdu");
+			}
 		} catch (InvalidPositionException e)
 		{
 			// TODO Auto-generated catch block

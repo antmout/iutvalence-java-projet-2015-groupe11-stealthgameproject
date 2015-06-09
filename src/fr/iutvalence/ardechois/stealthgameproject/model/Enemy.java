@@ -24,7 +24,11 @@ public class Enemy
 	 * @see VisionField
 	 */
 	private static VisionField visionField;
-
+	
+	/**
+	 * True if the enemy see the target.
+	 */
+	private boolean see;
 	
 	/**
 	 * Constructor with a position parameter.
@@ -36,6 +40,7 @@ public class Enemy
 	{
 		this.position = position;
 		this.visionField = new VisionField(position, initDir);
+		this.see = false;
 	}
 	
 	/**
@@ -52,6 +57,7 @@ public class Enemy
 	{
 		this.position = position;
 		this.visionField = visionField;
+		this.see = false;
 	}
 
 	/**
@@ -96,7 +102,23 @@ public class Enemy
 		if(map.getBlock(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY())) != Blocks.WALL)
 			this.position.move(direction);
 		
-		this.visionField.move(direction, map);
+		this.visionField.update(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY()), direction);
+	}
+	
+	/**
+	 * Getter for the boolean see.
+	 * 
+	 * @return see
+	 * 			The boolean see.
+	 */
+	public boolean getSee()
+	{
+		return this.see;
+	}
+	
+	public boolean checkVisionField(Player player)
+	{
+		return this.visionField.check(player);
 	}
 
 }

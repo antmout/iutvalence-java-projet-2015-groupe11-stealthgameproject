@@ -2,6 +2,7 @@ package fr.iutvalence.ardechois.stealthgameproject.model;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
 import fr.iutvalence.ardechois.stealthgameproject.view.LevelGetter;
@@ -90,5 +91,18 @@ public class Level implements LevelGetter
 	public Position getItemPosition()
 	{
 		return currentItem.getPosition();
+	}
+	
+	public boolean checkAllVisionFields(Player player)
+	{
+		Iterator<Enemy> iterator = this.enemyList.iterator();
+		
+		while(iterator.hasNext())
+		{
+			if(iterator.next().checkVisionField(player))
+				return true;
+		}
+		return false;
+		
 	}
 }

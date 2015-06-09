@@ -80,6 +80,8 @@ public class VisionField
 
 	/**
 	 * Allow to rotate the vision field.
+	 * 
+	 * @param direction
 	 */
 	private void rotate(Direction direction)
 	{
@@ -124,43 +126,27 @@ public class VisionField
 		}
 
 	}
-
-	/**
-	 * Allow to move the vision field.
-	 * 
-	 * @param direction
-	 * @param map
-	 * @throws InvalidPositionException
-	 */
-	public void move(Direction direction, Map map)
-			throws InvalidPositionException
+	
+	public void update(Position position, Direction direction)
 	{
-		switch (direction)
+		this.position = position;
+		this.curDirection = direction;
+	}
+	
+	public boolean check(Player player)
+	{
+		for (int i = 0; i != this.width; i++)
 		{
-		case UP:
-			if (this.position.getY() - 1 < 0)
-				throw new InvalidPositionException();
-			break;
-		case DOWN:
-			if (this.position.getY() + 1 >= map.getMapHeight())
-				throw new InvalidPositionException();
-			break;
-		case LEFT:
-			if (this.position.getX() - 1 < 0)
-				throw new InvalidPositionException();
-			break;
-		case RIGHT:
-			if (this.position.getX() + 1 >= map.getMapWidth())
-				throw new InvalidPositionException();
-			break;
+			for (int j = 0; j != this.height; j++)
+			{
+				Position squarePosition = new Position(this.position.getX() + i, this.position.getY() + j);
+					if (squarePosition == player.getPosition())
+					{
+						return true;
+					}
+			}
 		}
-
-		if (map.getBlock(new Position(this.position.getX() + direction.getX(),
-				this.position.getY() + direction.getY())) != Blocks.WALL)
-			this.position.move(direction);
-
-		this.rotate(direction);
-
+		return false;
 	}
 
 }
