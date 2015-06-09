@@ -14,8 +14,8 @@ public class GameLauncher
 
 	public static void main(String[] args)
 	{
-		//SGPController game = new SGPController();
-		Editor editor = new Editor();
+		SGPController game = new SGPController();
+		//Editor editor = new Editor();
 	}
 
 }
