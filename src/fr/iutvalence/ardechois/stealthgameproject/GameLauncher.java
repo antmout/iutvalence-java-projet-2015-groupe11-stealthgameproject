@@ -17,5 +17,4 @@ public class GameLauncher
 		SGPController game = new SGPController();
 		//Editor editor = new Editor();
 	}
-
 }

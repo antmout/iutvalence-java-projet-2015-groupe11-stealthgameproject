@@ -1,15 +1,12 @@
 package fr.iutvalence.ardechois.stealthgameproject;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 
-import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Blocks;
-import fr.iutvalence.ardechois.stealthgameproject.model.Map;
+import fr.iutvalence.ardechois.stealthgameproject.model.Level;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
 
@@ -25,11 +22,12 @@ public class Editor implements MouseListener
 	public static final String DEFAULT_MAP_NAME = "tempMap.txt";
 
 	/**
-	 * The map which is edited.
+	 * Level to edit.
 	 * 
-	 * @see Map
+	 * @see Level
 	 */
-	private Map map;
+	private Level level;
+	
 	/**
 	 * The Editor window.
 	 * 
@@ -45,17 +43,9 @@ public class Editor implements MouseListener
 	 */
 	public Editor()
 	{
-		try
-		{
-			this.file = new File(DEFAULT_MAP_NAME);
-			this.map = new Map(this.file);
-			this.editorWindow = new EditorWindow(map, null, this);
-		}
-		catch (InvalidMapSizeException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.file = new File(DEFAULT_MAP_NAME);
+		this.level = new Level(this.file);
+		this.editorWindow = new EditorWindow(level, level.getCurrentMap(), null, this);
 	}
 
 	// TODO Javadoc ;)
@@ -67,17 +57,9 @@ public class Editor implements MouseListener
 	// TODO Javadoc ;)
 	public Editor(File file)
 	{
-		try
-		{
-			this.file = file;
-			this.map = new Map(this.file);
-			this.editorWindow = new EditorWindow(map, null, this);
-		}
-		catch (InvalidMapSizeException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.file = file;
+		this.level = new Level(this.file);
+		this.editorWindow = new EditorWindow(level, level.getCurrentMap(), null, this);
 	}
 
 	// TODO Javadoc ;)
@@ -85,7 +67,7 @@ public class Editor implements MouseListener
 	{
 		try
 		{
-			map.setBlock(position, block);
+			level.getCurrentMap().setBlock(position, block);
 		}
 		catch (InvalidPositionException e)
 		{
@@ -112,7 +94,7 @@ public class Editor implements MouseListener
 	 */
 	public void saveMap(File file)
 	{
-		map.saveMapInFile(file);
+		level.getCurrentMap().saveMapInFile(file, level.getCurrentItem().getPosition());
 	}
 
 	@Override
@@ -148,7 +130,7 @@ public class Editor implements MouseListener
 				{
 					try
 					{
-						map.setBlock(mousePositionBlock, map.getBlock(mousePositionBlock).getNext());
+						level.getCurrentMap().setBlock(mousePositionBlock, level.getCurrentMap().getBlock(mousePositionBlock).getNext());
 					}
 					catch (InvalidPositionException e1)
 					{
@@ -157,7 +139,11 @@ public class Editor implements MouseListener
 				}
 				else if(e.isAltDown() && !e.isControlDown())
 				{
-					map.setSpawnPosition(mousePositionBlock);
+					level.getCurrentMap().setSpawnPosition(mousePositionBlock);
+				}
+				else if(!e.isAltDown() && e.isControlDown())
+				{
+					level.getCurrentItem().setPosition(mousePositionBlock);
 				}
 				break;
 
@@ -167,7 +153,7 @@ public class Editor implements MouseListener
 				break;
 
 			case MouseEvent.BUTTON2 :
-				map.reset();
+				level.getCurrentMap().reset();
 				break;
 		}
 

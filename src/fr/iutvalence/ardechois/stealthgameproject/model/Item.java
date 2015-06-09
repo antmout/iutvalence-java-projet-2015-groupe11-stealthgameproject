@@ -45,6 +45,19 @@ public class Item
 	{
 		return position;
 	}
+	
+	// TODO javadoc
+	public void setPosition(Position position)
+	{
+		this.position = new Position(position.getX(), position.getY());
+	}
+
+	// TODO javadoc
+	public void setPosition(int x, int y)
+	{
+		this.position = new Position(x, y);
+		
+	}
 
 	/**
 	 * Getter for the taken boolean.

@@ -1,8 +1,11 @@
 package fr.iutvalence.ardechois.stealthgameproject.view;
 
 import java.awt.event.MouseListener;
+
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
+
+import fr.iutvalence.ardechois.stealthgameproject.model.Level;
 
 //TODO Javadoc ;)
 public class EditorWindow extends JFrame
@@ -21,7 +24,7 @@ public class EditorWindow extends JFrame
 	private static final long serialVersionUID = 1L;
 
 	// TODO Javadoc ;)
-	public EditorWindow(MapGetter mapGetter, PlayerGetter playerGetter, MouseListener mouseListener)
+	public EditorWindow(LevelGetter levelGetter, MapGetter mapGetter, PlayerGetter playerGetter, MouseListener mouseListener)
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -33,7 +36,7 @@ public class EditorWindow extends JFrame
 		mainPanel.setEnabled(false);
 		mainPanel.setDividerSize(0);
 
-		mainPanel.add(new DisplayMap(mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
+		mainPanel.add(new DisplayMap(levelGetter, mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
 
 		mainPanel.addMouseListener(mouseListener);
 

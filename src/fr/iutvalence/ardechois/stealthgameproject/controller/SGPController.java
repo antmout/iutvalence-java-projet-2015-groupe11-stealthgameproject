@@ -27,7 +27,7 @@ public class SGPController implements KeyListener
 	{
 		setHashMap();
 		this.model = new SGPModel();
-		this.view = new SGPView(model.getLevel().getCurrentMap(), model.getPlayer(), this);
+		this.view = new SGPView(model.getLevel(), model.getLevel().getCurrentMap(), model.getPlayer(), this);
 	}
 	
 	// TODO Javadoc ;)

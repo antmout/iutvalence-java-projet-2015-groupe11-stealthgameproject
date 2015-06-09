@@ -90,19 +90,26 @@ public class Map implements MapGetter
 
 	// Map from file
 	// TODO Javadoc ;)
-	public Map(String filename) throws InvalidMapSizeException
+	public Map(String filename, Item currentItem) throws InvalidMapSizeException
 	{
-		this(new File(filename));
+		this(new File(filename), currentItem);
 	}
 
-	// TODO Javadoc ;)
-	public Map(File file) throws InvalidMapSizeException
+	// TODO javadoc
+	public Map(File file, Item currentItem)
 	{
 		setHashMap();
 		
 		spawnPosition = new Position(0, 0);
 		
-		loadMapFromFile(file);
+		try
+		{
+			loadMapFromFile(file, currentItem);
+		} catch (InvalidMapSizeException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	// Methods
@@ -181,18 +188,19 @@ public class Map implements MapGetter
 	 * @param filename
 	 * @throws InvalidMapSizeException
 	 */
-	public void loadMapFromFile(String filename) throws InvalidMapSizeException
+	public void loadMapFromFile(String filename, Item currentItem) throws InvalidMapSizeException
 	{
-		loadMapFromFile(new File(filename));
+		loadMapFromFile(new File(filename), currentItem);
 	}
 
 	/**
 	 * Load a map from the file.
 	 * 
 	 * @param file
+	 * @param currentItem 
 	 * @throws InvalidMapSizeException
 	 */
-	public void loadMapFromFile(File file) throws InvalidMapSizeException
+	public void loadMapFromFile(File file, Item currentItem) throws InvalidMapSizeException
 	{
 		try
 		{
@@ -218,6 +226,9 @@ public class Map implements MapGetter
 			}
 			
 			spawnPosition.setPosition((int) fileReader.read(), (int) fileReader.read());
+			
+			if(currentItem != null)
+				currentItem.setPosition((int) fileReader.read(), (int) fileReader.read());
 
 			fileReader.close();
 
@@ -235,17 +246,18 @@ public class Map implements MapGetter
 	 * 
 	 * @param filename
 	 */
-	public void saveMapInFile(String filename)
+	public void saveMapInFile(String filename, Position itemPosition)
 	{
-		saveMapInFile(new File(filename));
+		saveMapInFile(new File(filename), itemPosition);
 	}
 
 	/**
 	 * Save the map in the file.
 	 * 
 	 * @param file
+	 * @param position 
 	 */
-	public void saveMapInFile(File file)
+	public void saveMapInFile(File file, Position itemPosition)
 	{
 		try
 		{
@@ -263,8 +275,13 @@ public class Map implements MapGetter
 				}
 			}
 			
+			// Save spawn position
 			fileWriter.write(spawnPosition.getX());
 			fileWriter.write(spawnPosition.getY());
+			
+			//Save item position
+			fileWriter.write(itemPosition.getX());
+			fileWriter.write(itemPosition.getY());
 
 			fileWriter.close();
 

@@ -25,27 +25,33 @@ public class DisplayMap extends JPanel
 	public static final String PLAYER_FILENAME = "/player.png";
 	/** Filename of the spawn icon. {@value #SPAWN_FILENAME} */
 	public static final String SPAWN_FILENAME = "/spawn.png";
+	/** Filename of the item icon. {@value #ITEM_FILENAME} */
+	public static final String ITEM_FILENAME = "/item.png";
 
 	private int mapWidth;
 	private int mapHeight;
 	private int preferredBlockSize;
 	private MapGetter mapGetter;
 	private PlayerGetter playerGetter;
+	private LevelGetter levelGetter;
 
 	private Icon[][] groundGrid;
 	private Icon playerIcon;
 	private Icon spawnIcon;
+	private Icon itemIcon;
 
 	/**
 	 * Constructor who allow the display of mapGetter, playerGetter depending on preferredBlockSize.
+	 * @param levelGetter 
 	 * @param mapGetter
 	 * @param playerGetter
 	 * @param preferredBlockSize
 	 */
-	public DisplayMap(MapGetter mapGetter, PlayerGetter playerGetter, int preferredBlockSize)
+	public DisplayMap(LevelGetter levelGetter, MapGetter mapGetter, PlayerGetter playerGetter, int preferredBlockSize)
 	{
 		this.mapGetter = mapGetter;
 		this.playerGetter = playerGetter;
+		this.levelGetter = levelGetter;
 
 		this.mapWidth = mapGetter.getMapWidth();
 		this.mapHeight = mapGetter.getMapHeight();
@@ -55,6 +61,7 @@ public class DisplayMap extends JPanel
 			playerIcon = new ImageIcon(getClass().getResource(PLAYER_FILENAME));
 		
 		spawnIcon = new ImageIcon(getClass().getResource(SPAWN_FILENAME));
+		itemIcon = new ImageIcon(getClass().getResource(ITEM_FILENAME));
 
 		updateGroundGrid();
 
@@ -90,6 +97,8 @@ public class DisplayMap extends JPanel
 		}
 		
 		g.drawImage(((ImageIcon) spawnIcon).getImage(), mapGetter.getSpawnPosition().getX() * rectWidth, mapGetter.getSpawnPosition().getY() * rectHeight, null);
+		
+		g.drawImage(((ImageIcon) itemIcon).getImage(), levelGetter.getItemPosition().getX() *rectWidth,  levelGetter.getItemPosition().getY() *rectHeight, null);
 
 		if (playerGetter != null)
 		{

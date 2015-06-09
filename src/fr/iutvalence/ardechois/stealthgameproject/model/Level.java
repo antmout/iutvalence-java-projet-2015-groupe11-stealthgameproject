@@ -1,8 +1,10 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
+import fr.iutvalence.ardechois.stealthgameproject.view.LevelGetter;
 
 /**
  * Level of the game.
@@ -11,7 +13,7 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeExcep
  * @version 0.1.0
  *
  */
-public class Level
+public class Level implements LevelGetter
 {
 
     // Constants
@@ -34,17 +36,25 @@ public class Level
      */
     public Level()
     {
+        currentItem = new Item(new Position(0, 0));
+        enemyList = new ArrayList<Enemy>();
+        
 		try
 		{
-			currentMap = new Map("tempMap.txt");
+			currentMap = new Map("tempMap.txt", currentItem);
 		} catch (InvalidMapSizeException e)
 		{
 			e.printStackTrace();
 		}
-        currentItem = new Item(new Position(0, 0));
-        enemyList = new ArrayList<Enemy>();
-
     }
+    
+    public Level(File file)
+    {
+    	currentItem = new Item(new Position(0, 0));
+        enemyList = new ArrayList<Enemy>();
+    	currentMap = new Map(file, currentItem);
+    }
+    
     // Methods
     /**
      * Getter of the current map.
@@ -75,4 +85,10 @@ public class Level
     {
         this.currentItem = currentItem;
     }
+
+	@Override
+	public Position getItemPosition()
+	{
+		return currentItem.getPosition();
+	}
 }

@@ -9,9 +9,9 @@ public class SGPView
 	private GameWindow gameWindow;
 	
 	// TODO Javadoc ;)
-	public SGPView(MapGetter mapGetter, PlayerGetter playerGetter, KeyListener keyListener)
+	public SGPView(LevelGetter levelGetter, MapGetter mapGetter, PlayerGetter playerGetter, KeyListener keyListener)
 	{
-		gameWindow = new GameWindow(mapGetter, playerGetter, keyListener);
+		gameWindow = new GameWindow(levelGetter, mapGetter, playerGetter, keyListener);
 	}
 
 	// TODO Javadoc ;)

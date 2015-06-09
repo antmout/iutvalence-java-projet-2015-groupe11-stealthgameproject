@@ -25,7 +25,7 @@ public class GameWindow extends JFrame
 	 * @param playerGetter
 	 * @param keyListener
 	 */
-	public GameWindow(MapGetter mapGetter, PlayerGetter playerGetter, KeyListener keyListener)
+	public GameWindow(LevelGetter levelGetter, MapGetter mapGetter, PlayerGetter playerGetter, KeyListener keyListener)
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -37,7 +37,7 @@ public class GameWindow extends JFrame
 		mainPanel.setEnabled(false);
 		mainPanel.setDividerSize(0);
 		
-		mainPanel.add(new DisplayMap(mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
+		mainPanel.add(new DisplayMap(levelGetter, mapGetter, playerGetter, PREFERRED_BLOCK_SIZE));
 		
 		this.addKeyListener(keyListener);
 
