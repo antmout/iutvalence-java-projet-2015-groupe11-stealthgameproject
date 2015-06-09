@@ -135,7 +135,9 @@ public class Map implements MapGetter
 	 */
 	public int getMapWidth()
 	{
-		return grid.length;
+		if(grid !=null)
+			return grid.length;
+		return 0;
 	}
 
 	/**
@@ -145,7 +147,9 @@ public class Map implements MapGetter
 	 */
 	public int getMapHeight()
 	{
-		return grid[0].length;
+		if(grid != null)
+			return grid[0].length;
+		return 0;
 	}
 
 	/**
@@ -234,7 +238,8 @@ public class Map implements MapGetter
 
 		} catch (FileNotFoundException e)
 		{
-			e.printStackTrace();
+			System.out.println("File not found!");
+			System.exit(1);
 		} catch (IOException e)
 		{
 			e.printStackTrace();

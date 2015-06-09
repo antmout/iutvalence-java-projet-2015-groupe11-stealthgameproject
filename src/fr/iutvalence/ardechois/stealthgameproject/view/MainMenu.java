@@ -4,12 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 public class MainMenu extends JFrame {
+	private static final int HEIGHT_SPACE_BETWEEN_BUTTONS = 70;
+	public static final int WINDOW_HEIGHT = 670;
+	public static final int WINDOW_WIDTH = 808;
 	/**
 	 * MainMenu for the game.
 	 */
@@ -17,20 +22,20 @@ public class MainMenu extends JFrame {
 
 	public MainMenu() {
 		this.setTitle("Stealth Game Project");
-		this.setSize(808, 670);
+		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setVisible(true);
 	    
-	    this.setLayout(new FlowLayout(FlowLayout.CENTER,808,70));
+	    this.setLayout(new FlowLayout(FlowLayout.CENTER,WINDOW_WIDTH,HEIGHT_SPACE_BETWEEN_BUTTONS));
 	    
 	    JLabel title=new JLabel("Stealth Game Project");
 	    title.setHorizontalAlignment(SwingConstants.CENTER);
 	    title.setFont(new Font("Linux", Font.PLAIN, 50));
 	    this.getContentPane().add(title, BorderLayout.NORTH);
 	    
-	    JButton play=new JButton(new ActionLaunch(ActionType.PLAY, this));
+	    final JButton play=new JButton(new ActionLaunch(ActionType.PLAY, this));
 	    play.setText("Play");
 	    play.setPreferredSize(new Dimension(200,50));
 	    play.setHorizontalAlignment(SwingConstants.CENTER);
@@ -50,6 +55,5 @@ public class MainMenu extends JFrame {
 	    quit.setHorizontalAlignment(SwingConstants.CENTER);
 	    quit.setFont(new Font("Linux", Font.PLAIN, 20));
 	    this.getContentPane().add(quit,BorderLayout.CENTER);
-
 	    }
 }	

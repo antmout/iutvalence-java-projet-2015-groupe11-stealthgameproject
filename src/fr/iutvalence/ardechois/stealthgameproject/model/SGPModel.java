@@ -1,5 +1,7 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
+import java.io.File;
+
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
 //TODO Javadoc ;)
@@ -15,6 +17,13 @@ public class SGPModel
 	public SGPModel()
 	{
 		currentLevel = new Level();
+		player = new Player(currentLevel.getCurrentMap().getSpawnPosition());
+	}
+	
+	// TODO javadoc
+	public SGPModel(String filename)
+	{
+		currentLevel = new Level(new File(filename));
 		player = new Player(currentLevel.getCurrentMap().getSpawnPosition());
 	}
 

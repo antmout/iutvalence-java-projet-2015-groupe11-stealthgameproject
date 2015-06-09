@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import fr.iutvalence.ardechois.stealthgameproject.Editor;
 import fr.iutvalence.ardechois.stealthgameproject.controller.SGPController;
@@ -27,13 +28,17 @@ public class ActionLaunch extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		frame.dispose();
 		
+		String choice;
+		
 		switch(this.actionType)
 		{
 		case PLAY:
-			SGPController game = new SGPController();
+			choice = JOptionPane.showInputDialog(frame, "Which map to open?", null);
+			SGPController game = new SGPController(choice + ".txt");
 			break;
 		case EDITOR:
-			Editor editor = new Editor();
+			choice = JOptionPane.showInputDialog(frame, "Which map to open?", null);
+			Editor editor = new Editor(choice + ".txt");
 			break;
 		default:
 			
