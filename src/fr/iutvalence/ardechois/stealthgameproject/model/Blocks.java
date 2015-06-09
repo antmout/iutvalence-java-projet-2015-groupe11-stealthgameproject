@@ -9,6 +9,10 @@ import javax.swing.ImageIcon;
  * @author chayc
  *
  */
+/**
+ * @author antoine
+ *
+ */
 public enum Blocks
 {
 	/**
@@ -44,7 +48,9 @@ public enum Blocks
 	 */
 	private char id;
 	
-	// TODO Javadoc ;)
+	/**
+	 * Graphic representation of the block.
+	 */
 	private Icon icon;
 
 	/**
@@ -78,7 +84,10 @@ public enum Blocks
 		return this.icon;
 	}
 	
-	// TODO Javadoc ;)
+	/**
+	 * Get the next block.
+	 * @return values()[(ordinal()+1) % values().length]
+	 */
 	public Blocks getNext()
 	{
 		return values()[(ordinal()+1) % values().length];

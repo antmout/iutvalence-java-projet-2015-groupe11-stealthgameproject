@@ -18,7 +18,7 @@ import fr.iutvalence.ardechois.stealthgameproject.view.EditorWindow;
  */
 public class Editor implements MouseListener
 {
-	// TODO Javadoc ;)
+	/** Default filename of map : {@value #DEFAULT_MAP_NAME}. */
 	public static final String DEFAULT_MAP_NAME = "tempMap.txt";
 
 	/**
@@ -34,7 +34,7 @@ public class Editor implements MouseListener
 	 */
 	private EditorWindow editorWindow;
 
-	// TODO Javadoc ;)
+	// Javadoc ;)
 	private File file;
 
 	/**
