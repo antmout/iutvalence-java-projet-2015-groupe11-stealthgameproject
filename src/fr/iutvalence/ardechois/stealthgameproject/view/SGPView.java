@@ -23,10 +23,15 @@ public class SGPView
 	}
 
 	// TODO Javadoc
-	public void closeWindow()
+	public void closeWindowAndApp()
 	{
-		this.gameWindow.dispose();
+		this.closeWindow();
 		// Application don't stop if we don't exit it.
 		System.exit(0);
+	}
+
+	public void closeWindow()
+	{
+		gameWindow.dispose();
 	}
 }

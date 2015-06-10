@@ -15,32 +15,32 @@ import fr.iutvalence.ardechois.stealthgameproject.view.LevelGetter;
 public class Level implements LevelGetter
 {
 
-    // Constants
+	// Constants
 
-    // Attributes
+	// Attributes
 
-    /** Current Map of the level. */
-    private Map currentMap;
+	/** Current Map of the level. */
+	private Map currentMap;
 
-    /** List of the current enemies. */
-    private ArrayList<Enemy> enemyList;
+	/** List of the current enemies. */
+	private ArrayList<Enemy> enemyList;
 
-    /** Current item of the level. */
-    private Item currentItem;
-    
-    // TODO javadoc
-    private File file;
+	/** Current item of the level. */
+	private Item currentItem;
 
-    // Constructors
-    
-    /**
-     * Default constructor of the level.
-     */
-    public Level()
-    {
-        currentItem = new Item(new Position(0, 0));
-        enemyList = new ArrayList<Enemy>();
-        
+	// TODO javadoc
+	private File file;
+
+	// Constructors
+
+	/**
+	 * Default constructor of the level.
+	 */
+	public Level()
+	{
+		currentItem = new Item(new Position(0, 0));
+		enemyList = new ArrayList<Enemy>();
+
 		try
 		{
 			currentMap = new Map("tempMap.txt", currentItem, this);
@@ -48,58 +48,58 @@ public class Level implements LevelGetter
 		{
 			e.printStackTrace();
 		}
-    }
-    
-    public Level(File file)
-    {
-    	this.file = file;
-    	currentItem = new Item(new Position(0, 0));
-    	enemyList = new ArrayList<Enemy>();
-    	currentMap = new Map(file, currentItem, this);
-    }
-    
-    // Methods
-    /**
-     * Getter of the current map.
-     * 
-     * @return currentMap
-     */
-    public Map getCurrentMap()
-    {
-        return currentMap;
-    }
+	}
 
-    /**
-     * Getter of the current item.
-     * 
-     * @return currentItem
-     */
-    public Item getCurrentItem()
-    {
-        return currentItem;
-    }
+	public Level(File file)
+	{
+		this.file = file;
+		currentItem = new Item(new Position(0, 0));
+		enemyList = new ArrayList<Enemy>();
+		currentMap = new Map(file, currentItem, this);
+	}
 
-    /**
-     * Setter of the current item.
-     * 
-     * @param currentItem
-     */
-    public void setCurrentItem(Item currentItem)
-    {
-        this.currentItem = currentItem;
-    }
+	// Methods
+	/**
+	 * Getter of the current map.
+	 * 
+	 * @return currentMap
+	 */
+	public Map getCurrentMap()
+	{
+		return currentMap;
+	}
+
+	/**
+	 * Getter of the current item.
+	 * 
+	 * @return currentItem
+	 */
+	public Item getCurrentItem()
+	{
+		return currentItem;
+	}
+
+	/**
+	 * Setter of the current item.
+	 * 
+	 * @param currentItem
+	 */
+	public void setCurrentItem(Item currentItem)
+	{
+		this.currentItem = currentItem;
+	}
 
 	@Override
 	public Position getItemPosition()
 	{
 		return currentItem.getPosition();
 	}
-	
+
 	public boolean checkAllVisionFields(Player player)
 	{
-		for(Enemy enemy : enemyList)
+		for (Enemy enemy : enemyList)
 		{
-			if(enemy.checkVisionField(player))
+			if (enemy.checkVisionField(player))
 				return true;
 		}
 		return false;
@@ -107,7 +107,8 @@ public class Level implements LevelGetter
 
 	public void updateItem(Player player)
 	{
-		if(player.getPosition().getX() == currentItem.getPosition().getX() && player.getPosition().getY() == currentItem.getPosition().getY())
+		if (player.getPosition().getX() == currentItem.getPosition().getX()
+				&& player.getPosition().getY() == currentItem.getPosition().getY())
 		{
 			currentItem.setTaken(player.getPosition());
 		}
@@ -115,33 +116,46 @@ public class Level implements LevelGetter
 
 	public boolean hasWon(Player player)
 	{
-		return (currentItem.isTaken() && (currentMap.getSpawnPosition().getX() == player.getPosition().getX() && currentMap.getSpawnPosition().getY() == player.getPosition().getY()));
+		return (currentItem.isTaken() && (currentMap.getSpawnPosition().getX() == player.getPosition().getX() && currentMap
+				.getSpawnPosition().getY() == player.getPosition().getY()));
 	}
 
 	@Override
 	public ArrayList<Position> getEnemiesPositions()
 	{
 		ArrayList<Position> positions = new ArrayList<Position>();
-		for(Enemy enemy : enemyList)
+		for (Enemy enemy : enemyList)
 		{
 			positions.add(enemy.getPosition());
 		}
-		
+
 		return positions;
 	}
 
 	public void moveEnemies()
 	{
-		for(Enemy enemy : enemyList)
+		for (Enemy enemy : enemyList)
 		{
 			enemy.randomMove(currentMap);
 		}
-		
+
 	}
 
-	public void addEnemy(Position mousePositionBlock)
+	public void addEnemy(Position position)
 	{
-		enemyList.add(new Enemy(new Position(mousePositionBlock.getX(), mousePositionBlock.getY()), Direction.UP));
+		boolean exists = false;
+		for (Enemy enemy : enemyList)
+		{
+			if(enemy.getPosition().getX() == position.getX() && enemy.getPosition().getY() == position.getY())
+			{
+				exists = true;
+				enemyList.remove(enemy);
+				break;
+			}
+		}
+
+		if(!exists)
+			enemyList.add(new Enemy(new Position(position.getX(), position.getY()), Direction.UP));
 	}
 
 	public void reset()

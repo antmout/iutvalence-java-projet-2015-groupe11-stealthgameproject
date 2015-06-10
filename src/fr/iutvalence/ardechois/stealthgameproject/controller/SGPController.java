@@ -24,6 +24,9 @@ public class SGPController implements KeyListener
 
 	// TODO Javadoc ;)
 	public HashMap<String, Direction> directionHashMap;
+	
+	// TODO javadoc
+	private String filename;
 
 	// TODO Javadoc ;)
 	public SGPController()
@@ -36,6 +39,7 @@ public class SGPController implements KeyListener
 	//TODO javadoc
 	public SGPController(String filename)
 	{
+		this.filename = filename;
 		setHashMap();
 		this.model = new SGPModel(filename);
 		this.view = new SGPView(model.getLevel(), model.getLevel().getCurrentMap(), model.getPlayer(), this);
@@ -58,7 +62,14 @@ public class SGPController implements KeyListener
 		if(model.hasWon())
 		{
 			JOptionPane.showMessageDialog(null, "You won the game!");
+			this.view.closeWindowAndApp();
+		}
+		if(model.hasLose())
+		{
+			JOptionPane.showMessageDialog(null, "You loose :(");
 			this.view.closeWindow();
+			this.model = new SGPModel(filename);
+			this.view = new SGPView(model.getLevel(), model.getLevel().getCurrentMap(), model.getPlayer(), this);
 		}
 	}
 

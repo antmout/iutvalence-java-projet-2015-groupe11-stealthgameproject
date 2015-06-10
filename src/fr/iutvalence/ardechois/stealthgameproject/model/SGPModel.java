@@ -38,11 +38,6 @@ public class SGPModel
 			
 			currentLevel.moveEnemies();
 			
-			if(currentLevel.checkAllVisionFields(player))
-			{
-				JOptionPane.showMessageDialog(null, "You loose :(");
-			}
-			
 			currentLevel.updateItem(player);
 
 		} catch (InvalidPositionException e)
@@ -53,7 +48,12 @@ public class SGPModel
 	
 	public boolean hasWon()
 	{
-		return currentLevel.hasWon(player);
+		return this.currentLevel.hasWon(player);
+	}
+
+	public boolean hasLose()
+	{
+		return (currentLevel.checkAllVisionFields(player));
 	}
 
 	// TODO Javadoc ;)

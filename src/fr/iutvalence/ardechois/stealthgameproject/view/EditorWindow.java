@@ -3,6 +3,7 @@ package fr.iutvalence.ardechois.stealthgameproject.view;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 
 //TODO Javadoc ;)
@@ -42,5 +43,7 @@ public class EditorWindow extends JFrame
 		this.setContentPane(mainPanel);
 
 		this.setVisible(true);
+		
+		JOptionPane.showMessageDialog(null, "Click + : Ctrl = Object, Alt = Spawn, Shift = Enemy.");
 	}
 }
