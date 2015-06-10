@@ -151,7 +151,7 @@ public class Editor implements MouseListener
 			break;
 
 		case MouseEvent.BUTTON2:
-			level.getCurrentMap().reset();
+			level.reset();
 			break;
 		}
 

@@ -27,6 +27,9 @@ public class Level implements LevelGetter
 
     /** Current item of the level. */
     private Item currentItem;
+    
+    // TODO javadoc
+    private File file;
 
     // Constructors
     
@@ -49,6 +52,7 @@ public class Level implements LevelGetter
     
     public Level(File file)
     {
+    	this.file = file;
     	currentItem = new Item(new Position(0, 0));
     	enemyList = new ArrayList<Enemy>();
     	currentMap = new Map(file, currentItem, this);
@@ -138,5 +142,11 @@ public class Level implements LevelGetter
 	public void addEnemy(Position mousePositionBlock)
 	{
 		enemyList.add(new Enemy(new Position(mousePositionBlock.getX(), mousePositionBlock.getY()), Direction.UP));
+	}
+
+	public void reset()
+	{
+		enemyList.clear();
+		currentMap.reset();
 	}
 }
