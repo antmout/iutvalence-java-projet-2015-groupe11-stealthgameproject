@@ -11,7 +11,11 @@ import javax.swing.JPanel;
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 
-//TODO Javadoc ;)
+/**
+ * Allow to display the map.
+ * @author kelemenn
+ *
+ */
 public class DisplayMap extends JPanel
 {
 	/**

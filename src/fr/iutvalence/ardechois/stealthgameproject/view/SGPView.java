@@ -2,7 +2,12 @@ package fr.iutvalence.ardechois.stealthgameproject.view;
 
 import java.awt.event.KeyListener;
 
-//TODO Javadoc ;)
+/**
+ * The view.
+ * 
+ * @author kelemenn
+ *
+ */
 public class SGPView
 {
 	/**
