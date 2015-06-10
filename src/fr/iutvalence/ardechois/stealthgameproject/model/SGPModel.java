@@ -53,7 +53,7 @@ public class SGPModel
 
 	public boolean hasLose()
 	{
-		return (currentLevel.checkAllVisionFields(player));
+		return (currentLevel.checkAllVisionFields(player, this.getLevel().getCurrentMap()));
 	}
 
 	// TODO Javadoc ;)

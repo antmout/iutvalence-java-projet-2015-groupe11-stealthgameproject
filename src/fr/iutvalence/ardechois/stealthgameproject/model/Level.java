@@ -95,11 +95,11 @@ public class Level implements LevelGetter
 		return currentItem.getPosition();
 	}
 
-	public boolean checkAllVisionFields(Player player)
+	public boolean checkAllVisionFields(Player player, Map map)
 	{
 		for (Enemy enemy : enemyList)
 		{
-			if (enemy.checkVisionField(player))
+			if (enemy.checkVisionField(player, map))
 				return true;
 		}
 		return false;

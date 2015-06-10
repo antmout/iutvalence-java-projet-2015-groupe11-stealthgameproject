@@ -102,9 +102,9 @@ public class Enemy
 		return this.see;
 	}
 	
-	public boolean checkVisionField(Player player)
+	public boolean checkVisionField(Player player, Map map)
 	{
-		this.see =  this.visionField.check(player);
+		this.see =  this.visionField.check(player, map);
 		return getSee();
 	}
 
