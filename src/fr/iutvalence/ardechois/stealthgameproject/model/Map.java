@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidMapSizeException;
@@ -90,13 +91,13 @@ public class Map implements MapGetter
 
 	// Map from file
 	// TODO Javadoc ;)
-	public Map(String filename, Item currentItem) throws InvalidMapSizeException
+	public Map(String filename, Item currentItem, Level level) throws InvalidMapSizeException
 	{
-		this(new File(filename), currentItem);
+		this(new File(filename), currentItem, level);
 	}
 
 	// TODO javadoc
-	public Map(File file, Item currentItem)
+	public Map(File file, Item currentItem, Level level)
 	{
 		setHashMap();
 		
@@ -104,7 +105,7 @@ public class Map implements MapGetter
 		
 		try
 		{
-			loadMapFromFile(file, currentItem);
+			loadMapFromFile(file, currentItem, level);
 		} catch (InvalidMapSizeException e)
 		{
 			e.printStackTrace();
@@ -191,9 +192,9 @@ public class Map implements MapGetter
 	 * @param filename
 	 * @throws InvalidMapSizeException
 	 */
-	public void loadMapFromFile(String filename, Item currentItem) throws InvalidMapSizeException
+	public void loadMapFromFile(String filename, Item currentItem, Level level) throws InvalidMapSizeException
 	{
-		loadMapFromFile(new File(filename), currentItem);
+		loadMapFromFile(new File(filename), currentItem, level);
 	}
 
 	/**
@@ -201,9 +202,10 @@ public class Map implements MapGetter
 	 * 
 	 * @param file
 	 * @param currentItem 
+	 * @param level 
 	 * @throws InvalidMapSizeException
 	 */
-	public void loadMapFromFile(File file, Item currentItem) throws InvalidMapSizeException
+	public void loadMapFromFile(File file, Item currentItem, Level level) throws InvalidMapSizeException
 	{
 		try
 		{
@@ -232,6 +234,11 @@ public class Map implements MapGetter
 			
 			if(currentItem != null)
 				currentItem.setPosition((int) fileReader.read(), (int) fileReader.read());
+			
+			while(fileReader.ready())
+			{
+				level.addEnemy(new Position((int) fileReader.read(), (int) fileReader.read()));
+			}
 
 			fileReader.close();
 
@@ -250,9 +257,9 @@ public class Map implements MapGetter
 	 * 
 	 * @param filename
 	 */
-	public void saveMapInFile(String filename, Position itemPosition)
+	public void saveMapInFile(String filename, Position itemPosition, ArrayList<Position> enemiesPositions)
 	{
-		saveMapInFile(new File(filename), itemPosition);
+		saveMapInFile(new File(filename), itemPosition, enemiesPositions);
 	}
 
 	/**
@@ -261,7 +268,7 @@ public class Map implements MapGetter
 	 * @param file
 	 * @param position 
 	 */
-	public void saveMapInFile(File file, Position itemPosition)
+	public void saveMapInFile(File file, Position itemPosition, ArrayList<Position> enemiesPositions)
 	{
 		try
 		{
@@ -286,6 +293,12 @@ public class Map implements MapGetter
 			//Save item position
 			fileWriter.write(itemPosition.getX());
 			fileWriter.write(itemPosition.getY());
+			
+			for(Position pos : enemiesPositions)
+			{
+				fileWriter.write(pos.getX());
+				fileWriter.write(pos.getY());
+			}
 
 			fileWriter.close();
 

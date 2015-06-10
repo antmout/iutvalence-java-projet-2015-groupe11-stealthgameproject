@@ -40,7 +40,7 @@ public class Level implements LevelGetter
         
 		try
 		{
-			currentMap = new Map("tempMap.txt", currentItem);
+			currentMap = new Map("tempMap.txt", currentItem, this);
 		} catch (InvalidMapSizeException e)
 		{
 			e.printStackTrace();
@@ -51,9 +51,7 @@ public class Level implements LevelGetter
     {
     	currentItem = new Item(new Position(0, 0));
     	enemyList = new ArrayList<Enemy>();
-    	enemyList.add(new Enemy(new Position(5, 5), Direction.UP));
-    	enemyList.add(new Enemy(new Position(12, 12), Direction.DOWN));
-    	currentMap = new Map(file, currentItem);
+    	currentMap = new Map(file, currentItem, this);
     }
     
     // Methods
@@ -135,5 +133,10 @@ public class Level implements LevelGetter
 			enemy.randomMove(currentMap);
 		}
 		
+	}
+
+	public void addEnemy(Position mousePositionBlock)
+	{
+		enemyList.add(new Enemy(new Position(mousePositionBlock.getX(), mousePositionBlock.getY()), Direction.UP));
 	}
 }

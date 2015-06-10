@@ -27,7 +27,7 @@ public class Editor implements MouseListener
 	 * @see Level
 	 */
 	private Level level;
-	
+
 	/**
 	 * The Editor window.
 	 * 
@@ -68,8 +68,7 @@ public class Editor implements MouseListener
 		try
 		{
 			level.getCurrentMap().setBlock(position, block);
-		}
-		catch (InvalidPositionException e)
+		} catch (InvalidPositionException e)
 		{
 			e.printStackTrace();
 		}
@@ -93,7 +92,7 @@ public class Editor implements MouseListener
 	 */
 	public void saveMap(File file)
 	{
-		level.getCurrentMap().saveMapInFile(file, level.getCurrentItem().getPosition());
+		level.getCurrentMap().saveMapInFile(file, this.level.getCurrentItem().getPosition(), this.level.getEnemiesPositions());
 	}
 
 	@Override
@@ -124,36 +123,36 @@ public class Editor implements MouseListener
 				/ EditorWindow.PREFERRED_BLOCK_SIZE);
 		switch (e.getButton())
 		{
-			case MouseEvent.BUTTON1 :
-				if(!e.isAltDown() && !e.isControlDown())
+		case MouseEvent.BUTTON1:
+			if (!e.isAltDown() && !e.isControlDown() && !e.isShiftDown())
+			{
+				try
 				{
-					try
-					{
-						level.getCurrentMap().setBlock(mousePositionBlock, level.getCurrentMap().getBlock(mousePositionBlock).getNext());
-					}
-					catch (InvalidPositionException e1)
-					{
-						System.out.println("Mouse button pressed out of map.");
-					}
-				}
-				else if(e.isAltDown() && !e.isControlDown())
+					level.getCurrentMap().setBlock(mousePositionBlock, level.getCurrentMap().getBlock(mousePositionBlock).getNext());
+				} catch (InvalidPositionException e1)
 				{
-					level.getCurrentMap().setSpawnPosition(mousePositionBlock);
+					System.out.println("Mouse button pressed out of map.");
 				}
-				else if(!e.isAltDown() && e.isControlDown())
-				{
-					level.getCurrentItem().setPosition(mousePositionBlock);
-				}
-				break;
+			} else if (e.isAltDown() && !e.isControlDown() && !e.isShiftDown())
+			{
+				level.getCurrentMap().setSpawnPosition(mousePositionBlock);
+			} else if (!e.isAltDown() && e.isControlDown() && !e.isShiftDown())
+			{
+				level.getCurrentItem().setPosition(mousePositionBlock);
+			} else if (!e.isAltDown() && !e.isControlDown() && e.isShiftDown())
+			{
+				level.addEnemy(mousePositionBlock);
+			}
+			break;
 
-			case MouseEvent.BUTTON3 :
-				saveMap(file);
-				System.out.println("Map saved in " + file.getName());
-				break;
+		case MouseEvent.BUTTON3:
+			saveMap(file);
+			System.out.println("Map saved in " + file.getName());
+			break;
 
-			case MouseEvent.BUTTON2 :
-				level.getCurrentMap().reset();
-				break;
+		case MouseEvent.BUTTON2:
+			level.getCurrentMap().reset();
+			break;
 		}
 
 		editorWindow.invalidate();
