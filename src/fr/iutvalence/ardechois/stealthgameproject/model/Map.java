@@ -62,13 +62,21 @@ public class Map implements MapGetter
 	// Constructors
 
 	// Empty maps
-	// TODO Javadoc ;)
+	/**
+	 * Create the map with the default map size.
+	 * @throws InvalidMapSizeException
+	 */
 	public Map() throws InvalidMapSizeException
 	{
 		this(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT);
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Create the map with the given map size.
+	 * @param width
+	 * @param height
+	 * @throws InvalidMapSizeException
+	 */
 	public Map(int width, int height) throws InvalidMapSizeException
 	{
 		setHashMap();
@@ -90,13 +98,24 @@ public class Map implements MapGetter
 	}
 
 	// Map from file
-	// TODO Javadoc ;)
+	/**
+	 * Create the map with the parameters.
+	 * @param filename
+	 * @param currentItem
+	 * @param level
+	 * @throws InvalidMapSizeException
+	 */
 	public Map(String filename, Item currentItem, Level level) throws InvalidMapSizeException
 	{
 		this(new File(filename), currentItem, level);
 	}
 
-	// TODO javadoc
+	/**
+	 * Create the map with the parameters.
+	 * @param file
+	 * @param currentItem
+	 * @param level
+	 */
 	public Map(File file, Item currentItem, Level level)
 	{
 		setHashMap();
@@ -308,7 +327,9 @@ public class Map implements MapGetter
 		}
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Reset the map with grass blocks.
+	 */
 	public void reset()
 	{
 		for (int lineNumber = 0; lineNumber < getMapHeight(); lineNumber++)

@@ -11,32 +11,48 @@ import fr.iutvalence.ardechois.stealthgameproject.model.SGPModel;
 import fr.iutvalence.ardechois.stealthgameproject.view.SGPView;
 
 /**
+ * Game controller.
+ * 
  * @author antoine
  *
  */
 public class SGPController implements KeyListener
 {
-	// TODO Javadoc ;)
+	/**
+	 * Model.
+	 */
 	private SGPModel model;
 
-	// TODO Javadoc ;)
+	/**
+	 * View.
+	 */
 	private SGPView view;
 
-	// TODO Javadoc ;)
+	/**
+	 * Map to convert string into direction.
+	 */
 	public HashMap<String, Direction> directionHashMap;
-	
-	// TODO javadoc
+
+	/**
+	 * Current map filename.
+	 */
 	private String filename;
 
-	// TODO Javadoc ;)
+	/**
+	 * Default constructor.
+	 */
 	public SGPController()
 	{
 		setHashMap();
 		this.model = new SGPModel();
 		this.view = new SGPView(model.getLevel(), model.getLevel().getCurrentMap(), model.getPlayer(), this);
 	}
-	
-	//TODO javadoc
+
+	/**
+	 * Constructor with a given filename.
+	 * 
+	 * @param filename
+	 */
 	public SGPController(String filename)
 	{
 		this.filename = filename;
@@ -44,8 +60,10 @@ public class SGPController implements KeyListener
 		this.model = new SGPModel(filename);
 		this.view = new SGPView(model.getLevel(), model.getLevel().getCurrentMap(), model.getPlayer(), this);
 	}
-	
-	// TODO Javadoc ;)
+
+	/**
+	 * Set the hash map.
+	 */
 	private void setHashMap()
 	{
 		this.directionHashMap = new HashMap<String, Direction>();
@@ -54,17 +72,21 @@ public class SGPController implements KeyListener
 		this.directionHashMap.put("LEFT", Direction.LEFT);
 		this.directionHashMap.put("RIGHT", Direction.RIGHT);
 	}
-	
-	// TODO Javadoc ;)
+
+	/**
+	 * Move the player and all the game.
+	 * 
+	 * @param direction
+	 */
 	public void move(Direction direction)
 	{
 		model.move(direction);
-		if(model.hasWon())
+		if (model.hasWon())
 		{
 			JOptionPane.showMessageDialog(null, "You won the game!");
 			this.view.closeWindowAndApp();
 		}
-		if(model.hasLose())
+		if (model.hasLose())
 		{
 			JOptionPane.showMessageDialog(null, "You loose :(");
 			this.view.closeWindow();
@@ -79,7 +101,7 @@ public class SGPController implements KeyListener
 		// / Do nothing
 
 	}
-	
+
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
@@ -87,26 +109,26 @@ public class SGPController implements KeyListener
 
 		switch (key)
 		{
-			case KeyEvent.VK_UP :
-				this.move(Direction.UP);
-				break;
+		case KeyEvent.VK_UP:
+			this.move(Direction.UP);
+			break;
 
-			case KeyEvent.VK_DOWN :
-				this.move(Direction.DOWN);
-				break;
+		case KeyEvent.VK_DOWN:
+			this.move(Direction.DOWN);
+			break;
 
-			case KeyEvent.VK_LEFT :
-				this.move(Direction.LEFT);
-				break;
+		case KeyEvent.VK_LEFT:
+			this.move(Direction.LEFT);
+			break;
 
-			case KeyEvent.VK_RIGHT :
-				this.move(Direction.RIGHT);
-				break;
+		case KeyEvent.VK_RIGHT:
+			this.move(Direction.RIGHT);
+			break;
 		}
 
 		this.view.updateWindow();
 	}
-	
+
 	@Override
 	public void keyReleased(KeyEvent e)
 	{

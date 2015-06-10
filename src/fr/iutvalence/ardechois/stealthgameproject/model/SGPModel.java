@@ -2,34 +2,48 @@ package fr.iutvalence.ardechois.stealthgameproject.model;
 
 import java.io.File;
 
-import javax.swing.JOptionPane;
-
 import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
 
-//TODO Javadoc ;)
+/**
+ * Model of the game.
+ * @author chayc
+ *
+ */
 public class SGPModel
 {
-	// TODO Javadoc ;)
+	/**
+	 * Player of the game.
+	 */
 	private Player player;
 
-	// TODO Javadoc ;)
+	/**
+	 * Current level.
+	 */
 	private Level currentLevel;
 
-	// TODO Javadoc ;)
+	/**
+	 * Default constructor.
+	 */
 	public SGPModel()
 	{
 		currentLevel = new Level();
 		player = new Player(currentLevel.getCurrentMap().getSpawnPosition());
 	}
 	
-	// TODO javadoc
+	/**
+	 * Create the model with the given filename.
+	 * @param filename
+	 */
 	public SGPModel(String filename)
 	{
 		currentLevel = new Level(new File(filename));
 		player = new Player(currentLevel.getCurrentMap().getSpawnPosition());
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Move in the given direction.
+	 * @param direction
+	 */
 	public void move(Direction direction)
 	{
 		try
@@ -46,23 +60,37 @@ public class SGPModel
 		}
 	}
 	
+	/**
+	 * Return true if the player has won.
+	 * @return
+	 */
 	public boolean hasWon()
 	{
 		return this.currentLevel.hasWon(player);
 	}
 
+	/**
+	 * Return true if the player has lose.
+	 * @return
+	 */
 	public boolean hasLose()
 	{
-		return (currentLevel.checkAllVisionFields(player, this.getLevel().getCurrentMap()));
+		return (currentLevel.checkAllVisionFields(player));
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Get the current player.
+	 * @return
+	 */
 	public Player getPlayer()
 	{
 		return this.player;
 	}
 	
-	// TODO Javadoc ;)
+	/**
+	 * Get the current level.
+	 * @return
+	 */
 	public Level getLevel()
 	{
 		return currentLevel;

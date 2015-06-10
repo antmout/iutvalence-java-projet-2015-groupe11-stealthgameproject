@@ -46,13 +46,20 @@ public class Item
 		return position;
 	}
 	
-	// TODO javadoc
+	/**
+	 * Set the item position with the given position.
+	 * @param position
+	 */
 	public void setPosition(Position position)
 	{
 		this.position = new Position(position.getX(), position.getY());
 	}
 
-	// TODO javadoc
+	/**
+	 * Set the item position with the given x and y coordinates.
+	 * @param x
+	 * @param y
+	 */
 	public void setPosition(int x, int y)
 	{
 		this.position = new Position(x, y);
@@ -70,6 +77,10 @@ public class Item
 		return taken;
 	}
 	
+	/**
+	 * Set the item "state" to taken.
+	 * @param playerPosition
+	 */
 	public void setTaken(Position playerPosition)
 	{
 		this.taken = true;

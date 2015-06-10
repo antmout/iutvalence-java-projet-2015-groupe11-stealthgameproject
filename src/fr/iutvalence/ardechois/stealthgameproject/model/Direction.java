@@ -11,34 +11,40 @@ public enum Direction
 
 {
 	/**
-	 * .
+	 * Up direction.
 	 * 
 	 * @value "0,-1"
 	 */
 	UP(0, -1),
 
 	/**
-	 * .
+	 * Down direction.
 	 * 
 	 * @value "0,+1"
 	 */
 	DOWN(0, 1),
 
 	/**
-	 * .
+	 * Left direction.
 	 * 
 	 * @value "-1,0"
 	 */
 	LEFT(-1, 0),
 
 	/**
-	 * .
+	 * right direction.
 	 * 
 	 * @value "1,0"
 	 */
 	RIGHT(1, 0);
 
+	/**
+	 * Delta X move value.
+	 */
 	private int x;
+	/**
+	 * Delta X move value.
+	 */
 	private int y;
 
 	/**
@@ -49,6 +55,7 @@ public enum Direction
 		this.x = x;
 		this.y = y;
 	}
+
 	/**
 	 * Getter Position x.
 	 * 
@@ -68,7 +75,12 @@ public enum Direction
 	{
 		return y;
 	}
-	
+
+	/**
+	 * Get the direction of the given id.
+	 * @param id
+	 * @return Direction.
+	 */
 	public static Direction getDirection(int id)
 	{
 		return values()[id];

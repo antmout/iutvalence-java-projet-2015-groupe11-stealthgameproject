@@ -1,8 +1,11 @@
 package fr.iutvalence.ardechois.stealthgameproject.model;
 
-import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionException;
-
-//TODO Javadoc ;)
+/**
+ * Enemies vision field.
+ * 
+ * @author kelemenn
+ *
+ */
 public class VisionField
 {
 	// Constants
@@ -129,12 +132,21 @@ public class VisionField
 
 	}
 	
+	/**
+	 * Update the vision field.
+	 * @param direction
+	 */
 	public void update(Direction direction)
 	{
 		rotate(direction);
 	}
 	
-	public boolean check(Player player, Map map)
+	/**
+	 * Check if the player is in the vision field.
+	 * @param player
+	 * @return
+	 */
+	public boolean check(Player player)
 	{
 		for (int x = 0; x < this.width; x++)
 		{

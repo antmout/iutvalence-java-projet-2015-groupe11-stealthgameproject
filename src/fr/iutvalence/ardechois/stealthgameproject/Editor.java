@@ -35,7 +35,7 @@ public class Editor implements MouseListener
 	 */
 	private EditorWindow editorWindow;
 
-	// Javadoc ;)
+	/** File for the current edited map.*/
 	private File file;
 
 	/**
@@ -48,13 +48,19 @@ public class Editor implements MouseListener
 		this.editorWindow = new EditorWindow(level, level.getCurrentMap(), null, this);
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Constructor with given filename.
+	 * @param filename
+	 */
 	public Editor(String filename)
 	{
 		this(new File(filename));
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Constructor with given file.
+	 * @param file
+	 */
 	public Editor(File file)
 	{
 		this.file = file;
@@ -62,7 +68,11 @@ public class Editor implements MouseListener
 		this.editorWindow = new EditorWindow(level, level.getCurrentMap(), null, this);
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Set he given block on the given position.
+	 * @param position
+	 * @param block
+	 */
 	public void setBlock(Position position, Blocks block)
 	{
 		try

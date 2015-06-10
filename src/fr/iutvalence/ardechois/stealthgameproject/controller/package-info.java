@@ -1,7 +1,6 @@
 /**
+ * Controller package.
  * 
- */
-/**
  * @author moutona
  *
  */

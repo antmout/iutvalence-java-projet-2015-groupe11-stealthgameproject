@@ -102,12 +102,22 @@ public class Enemy
 		return this.see;
 	}
 	
-	public boolean checkVisionField(Player player, Map map)
+	/**
+	 * Check if the player is seen.
+	 * @param player
+	 * @param map
+	 * @return
+	 */
+	public boolean checkVisionField(Player player)
 	{
-		this.see =  this.visionField.check(player, map);
+		this.see =  this.visionField.check(player);
 		return getSee();
 	}
-
+	
+	/**
+	 * Move the enemy in a random direction.
+	 * @param map
+	 */
 	public void randomMove(Map map)
 	{
 		Random random = new Random();

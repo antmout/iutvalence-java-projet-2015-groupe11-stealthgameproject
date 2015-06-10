@@ -47,6 +47,10 @@ public class Level implements LevelGetter
 		}
 	}
 
+	/**
+	 * Construct the level with the given filename.
+	 * @param file
+	 */
 	public Level(File file)
 	{
 		currentItem = new Item(new Position(0, 0));
@@ -91,16 +95,25 @@ public class Level implements LevelGetter
 		return currentItem.getPosition();
 	}
 
-	public boolean checkAllVisionFields(Player player, Map map)
+	/**
+	 * Check if the player is in a vision field.
+	 * @param player
+	 * @return
+	 */
+	public boolean checkAllVisionFields(Player player)
 	{
 		for (Enemy enemy : enemyList)
 		{
-			if (enemy.checkVisionField(player, map))
+			if (enemy.checkVisionField(player))
 				return true;
 		}
 		return false;
 	}
 
+	/**
+	 * Update the current item.
+	 * @param player
+	 */
 	public void updateItem(Player player)
 	{
 		if (player.getPosition().getX() == currentItem.getPosition().getX()
@@ -110,6 +123,11 @@ public class Level implements LevelGetter
 		}
 	}
 
+	/**
+	 * Return true if the player has won.
+	 * @param player
+	 * @return
+	 */
 	public boolean hasWon(Player player)
 	{
 		return (currentItem.isTaken() && (currentMap.getSpawnPosition().getX() == player.getPosition().getX() && currentMap
@@ -128,6 +146,9 @@ public class Level implements LevelGetter
 		return positions;
 	}
 
+	/**
+	 * Move all the enemies with random direction.
+	 */
 	public void moveEnemies()
 	{
 		for (Enemy enemy : enemyList)
@@ -137,6 +158,10 @@ public class Level implements LevelGetter
 
 	}
 
+	/**
+	 * Add an enemy to the enemyList.
+	 * @param position
+	 */
 	public void addEnemy(Position position)
 	{
 		boolean exists = false;
@@ -154,6 +179,9 @@ public class Level implements LevelGetter
 			enemyList.add(new Enemy(new Position(position.getX(), position.getY()), Direction.UP));
 	}
 
+	/**
+	 * Reset the level.
+	 */
 	public void reset()
 	{
 		enemyList.clear();

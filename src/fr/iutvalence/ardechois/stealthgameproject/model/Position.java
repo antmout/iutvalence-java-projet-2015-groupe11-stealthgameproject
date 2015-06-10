@@ -50,14 +50,20 @@ public class Position
 		return y;
 	}
 
-	// TODO Javadoc ;)
-	/** Move. */
+	/**
+	 * Move with x and y deltas.
+	 * @param x
+	 * @param y
+	 */
 	public void move(int x, int y)
 	{
 		setPosition(this.x + x, this.y + y);
 	}
 	
-	// TODO Javadoc ;)
+	/**
+	 * Move the position with given direction.
+	 * @param direction
+	 */
 	public void move(Direction direction)
 	{
 		setPosition(this.x + direction.getX(), this.y + direction.getY());
