@@ -64,7 +64,8 @@ public class Player implements PlayerGetter
 			break;
 		}
 		
-		if(map.getBlock(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY())) != Blocks.WALL)
+		Blocks nextBlock = map.getBlock(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY()));
+		if(nextBlock != Blocks.WALL && nextBlock != Blocks.WATER)
 			this.position.move(direction);
 	}
 }

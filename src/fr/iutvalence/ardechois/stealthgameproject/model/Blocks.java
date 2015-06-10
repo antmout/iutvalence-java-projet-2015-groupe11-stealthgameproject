@@ -41,7 +41,21 @@ public enum Blocks
 	 * 
 	 * @value "3"
 	 */
-	SLAB('3', "/slab.png");
+	SLAB('3', "/slab.png"),
+	
+	/**
+	 * Water block.
+	 * 
+	 * @value "4"
+	 */
+	WATER('4', "/water.png"),
+	
+	/**
+	 * Sand block.
+	 * 
+	 * @value "5"
+	 */
+	SAND('5', "/sand.png");
 	
 	/**
 	 * Block id, only one character.
