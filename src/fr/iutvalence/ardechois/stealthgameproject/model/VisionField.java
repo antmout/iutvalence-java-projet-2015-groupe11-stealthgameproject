@@ -145,56 +145,19 @@ public class VisionField
 				switch(this.curDirection)
 				{
 				case UP:
-					try
-					{
-						if (map.getBlock(new Position(this.position.getX() + x/2 , this.position.getY() - y - 1 )) != Blocks.WALL)
-						{
-							halfSquarePosition = new Position(this.position.getX() + x/2 , this.position.getY() - y - 1 );
-							halfSquarePosition2 = new Position(this.position.getX() - x/2 , this.position.getY() - y - 1 );
-						}
-					} catch (InvalidPositionException e)
-					{
-						// Do nothing
-					}
-					break;
+					halfSquarePosition = new Position(this.position.getX() + x/2 , this.position.getY() - y - 1 );
+					halfSquarePosition2 = new Position(this.position.getX() - x/2 , this.position.getY() - y - 1 );
 				case DOWN:
-					try
-					{
-						if (map.getBlock(new Position(this.position.getX() + x/2 , this.position.getY() - y - 1 )) != Blocks.WALL)
-						{
-							halfSquarePosition = new Position(this.position.getX() + x/2 , this.position.getY() + y - 1 );
-							halfSquarePosition2 = new Position(this.position.getX() - x/2 , this.position.getY() + y - 1 );
-						}
-					} catch (InvalidPositionException e)
-					{
-						// Do nothing
-					}
+					halfSquarePosition = new Position(this.position.getX() + x/2 , this.position.getY() + y - 1 );
+					halfSquarePosition2 = new Position(this.position.getX() - x/2 , this.position.getY() + y - 1 );
 					break;
 				case RIGHT:
-					try
-					{
-						if (map.getBlock(new Position(this.position.getX() + x/2 , this.position.getY() - y - 1 )) != Blocks.WALL)
-						{
-							halfSquarePosition = new Position(this.position.getX() + x + 1 , this.position.getY() + y/2 );
-							halfSquarePosition2 = new Position(this.position.getX() + x + 1 , this.position.getY() - y/2 );
-						}
-					} catch (InvalidPositionException e)
-					{
-						// Do nothing
-					}
+					halfSquarePosition = new Position(this.position.getX() + x + 1 , this.position.getY() + y/2 );
+					halfSquarePosition2 = new Position(this.position.getX() + x + 1 , this.position.getY() - y/2 );
 					break;
 				case LEFT:
-					try
-					{
-						if (map.getBlock(new Position(this.position.getX() + x/2 , this.position.getY() - y - 1 )) != Blocks.WALL)
-						{
-							halfSquarePosition = new Position(this.position.getX() - x - 1 , this.position.getY() + y/2 );
-							halfSquarePosition2 = new Position(this.position.getX() - x - 1 , this.position.getY() - y/2 );
-						}
-					} catch (InvalidPositionException e)
-					{
-						// Do nothing
-					}
+					halfSquarePosition = new Position(this.position.getX() - x - 1 , this.position.getY() + y/2 );
+					halfSquarePosition2 = new Position(this.position.getX() - x - 1 , this.position.getY() - y/2 );
 					break;
 				}
 
