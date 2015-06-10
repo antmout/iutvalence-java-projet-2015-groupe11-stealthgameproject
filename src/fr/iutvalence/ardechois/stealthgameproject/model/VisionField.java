@@ -12,7 +12,7 @@ public class VisionField
 	/**
 	 * The default vision field height;
 	 */
-	public final static int DEFAULT_HEIGHT = 3;
+	public final static int DEFAULT_HEIGHT = 2;
 
 	// Attributes
 	/**
@@ -51,6 +51,8 @@ public class VisionField
 	{
 		this.width = DEFAULT_WIDTH;
 		this.height = DEFAULT_HEIGHT;
+		this.curDirection = Direction.UP;
+		this.rotate(initDir);
 		this.position = position;
 		this.curDirection = initDir;
 	}
@@ -134,11 +136,31 @@ public class VisionField
 	{
 		for (int x = 0; x < this.width; x++)
 		{
-			for (int y = 1; y < this.height; y++)
+			for (int y = 0; y < this.height; y++)
 			{
-				Position squarePositionRight = new Position(this.position.getX() + x/2 , this.position.getY() + y );
-				Position squarePositionLeft = new Position(this.position.getX() - x/2 , this.position.getY() + y );
-				if (squarePositionRight.equals(player.getPosition()) || squarePositionLeft.equals(player.getPosition()))
+				Position halfSquarePosition = null;
+				Position halfSquarePosition2 = null;
+				switch(this.curDirection)
+				{
+				case UP:
+					halfSquarePosition = new Position(this.position.getX() + x/2 , this.position.getY() - y - 1 );
+					halfSquarePosition2 = new Position(this.position.getX() - x/2 , this.position.getY() - y - 1 );
+					break;
+				case DOWN:
+					halfSquarePosition = new Position(this.position.getX() + x/2 , this.position.getY() + y - 1 );
+					halfSquarePosition2 = new Position(this.position.getX() - x/2 , this.position.getY() + y - 1 );
+					break;
+				case RIGHT:
+					halfSquarePosition = new Position(this.position.getX() + x + 1 , this.position.getY() + y/2 );
+					halfSquarePosition2 = new Position(this.position.getX() + x + 1 , this.position.getY() - y/2 );
+					break;
+				case LEFT:
+					halfSquarePosition = new Position(this.position.getX() - x - 1 , this.position.getY() + y/2 );
+					halfSquarePosition2 = new Position(this.position.getX() - x - 1 , this.position.getY() - y/2 );
+					break;
+				}
+
+				if (halfSquarePosition.equals(player.getPosition()) || halfSquarePosition2.equals(player.getPosition()))
 				{
 					return true;
 				}
