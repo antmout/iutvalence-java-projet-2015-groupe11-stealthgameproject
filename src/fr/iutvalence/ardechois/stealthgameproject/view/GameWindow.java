@@ -5,22 +5,38 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 
-//TODO Javadoc ;)
+/**
+ * The game window.
+ * 
+ * @author kelemenn
+ *
+ */
 public class GameWindow extends JFrame 
 {
-
+	
+	/**
+	 * Serial version UID.
+	 */
 	private static final long serialVersionUID = 1L;
 
-	// TODO Javadoc ;)
+	/**
+	 * The window width.
+	 */
 	public static final int WINDOW_WIDTH = 808;
-	// TODO Javadoc ;)
+
+	/**
+	 * The window height.
+	 */
 	public static final int WINDOW_HEIGHT = 670;
 
-	// TODO Javadoc ;)
+	/**
+	 * The prefered block size.
+	 */
 	public static final int PREFERRED_BLOCK_SIZE = 16;
 	
 	/**
 	 * Default game window constructor.
+	 * 
 	 * @param mapGetter
 	 * @param playerGetter
 	 * @param keyListener

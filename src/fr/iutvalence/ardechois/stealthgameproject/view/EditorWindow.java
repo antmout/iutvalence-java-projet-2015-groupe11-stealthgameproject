@@ -6,15 +6,26 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 
-//TODO Javadoc ;)
+/**
+ * The editor window.
+ * 
+ * @author kelemenn
+ *
+ */
 public class EditorWindow extends JFrame
 {
-	// TODO Javadoc ;)
+	/**
+	 * The window width.
+	 */
 	public static final int WINDOW_WIDTH = 808;
-	// TODO Javadoc ;)
+	/**
+	 * The window height.
+	 */
 	public static final int WINDOW_HEIGHT = 670;
 
-	// TODO Javadoc ;)
+	/**
+	 * The prefered block size.
+	 */
 	public static final int PREFERRED_BLOCK_SIZE = 16;
 
 	/**
@@ -22,7 +33,14 @@ public class EditorWindow extends JFrame
 	 */
 	private static final long serialVersionUID = 1L;
 
-	// TODO Javadoc ;)
+	/**
+	 * Constructor with levelGetter, mapGetter, playerGetter and mouseListener parameter.
+	 * 
+	 * @param levelGetter
+	 * @param mapGetter
+	 * @param playerGetter
+	 * @param mouseListener
+	 */
 	public EditorWindow(LevelGetter levelGetter, MapGetter mapGetter, PlayerGetter playerGetter, MouseListener mouseListener)
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

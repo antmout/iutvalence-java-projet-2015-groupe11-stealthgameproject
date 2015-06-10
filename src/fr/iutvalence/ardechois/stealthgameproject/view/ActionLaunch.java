@@ -9,6 +9,12 @@ import javax.swing.JOptionPane;
 import fr.iutvalence.ardechois.stealthgameproject.Editor;
 import fr.iutvalence.ardechois.stealthgameproject.controller.SGPController;
 
+/**
+ * Action when you click on a button.
+ * 
+ * @author kelemenn
+ *
+ */
 public class ActionLaunch extends AbstractAction {
 	
 	/**
@@ -16,9 +22,21 @@ public class ActionLaunch extends AbstractAction {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * The action type.
+	 */
 	private ActionType actionType;
+	/**
+	 * The window.
+	 */
 	private JFrame frame;
 	
+	/**
+	 * Constructor with ActionType and JFrame parameter. 
+	 * 
+	 * @param actionType
+	 * @param frame
+	 */
 	public ActionLaunch(ActionType actionType, JFrame frame) {
 		this.actionType = actionType;
 		this.frame = frame;

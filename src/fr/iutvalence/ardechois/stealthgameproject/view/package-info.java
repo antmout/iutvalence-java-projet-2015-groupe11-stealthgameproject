@@ -1,7 +1,6 @@
 /**
+ * View package.
  * 
- */
-/**
  * @author moutona
  *
  */

@@ -4,21 +4,48 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionExce
 import fr.iutvalence.ardechois.stealthgameproject.model.Blocks;
 import fr.iutvalence.ardechois.stealthgameproject.model.Position;
 
-//TODO Javadoc ;)
+/**
+ * Interface for the map.
+ * 
+ * @author chayc
+ *
+ */
 public interface MapGetter
 {
-	// TODO Javadoc ;)
+	/**
+	 * Getter for the block at the asked position.
+	 * 
+	 * @param position
+	 * @return
+	 * @throws InvalidPositionException
+	 */
 	public Blocks getBlock(Position position) throws InvalidPositionException;
 	
-	// TODO Javadoc ;)
+	/**
+	 * Getter for the map width.
+	 * 
+	 * @return
+	 */
 	public int getMapWidth();
 
-	// TODO Javadoc ;)
+	/**
+	 * Getter for the map height.
+	 * 
+	 * @return
+	 */
 	public int getMapHeight();
 
-	// TODO Javadoc ;)
+	/**
+	 * Getter for the spawn position.
+	 * 
+	 * @return
+	 */
 	public Position getSpawnPosition();
 
-	// TODO Javadoc ;)
+	/**
+	 * Setter for the spawn position at the asked spawnPosition.
+	 * 
+	 * @param spawnPosition
+	 */
 	public void setSpawnPosition(Position spawnPosition);
 }

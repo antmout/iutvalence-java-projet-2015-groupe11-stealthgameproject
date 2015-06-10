@@ -5,22 +5,37 @@ import java.awt.event.KeyListener;
 //TODO Javadoc ;)
 public class SGPView
 {
-	// TODO Javadoc ;)
+	/**
+	 * The game window.
+	 * 
+	 * @see GameWindow
+	 */
 	private GameWindow gameWindow;
 	
-	// TODO Javadoc ;)
+	/**
+	 * Constructor with levelGetter, mapGetter, playerGetter and keyListener parameters.
+	 * 
+	 * @param levelGetter
+	 * @param mapGetter
+	 * @param playerGetter
+	 * @param keyListener
+	 */
 	public SGPView(LevelGetter levelGetter, MapGetter mapGetter, PlayerGetter playerGetter, KeyListener keyListener)
 	{
 		gameWindow = new GameWindow(levelGetter, mapGetter, playerGetter, keyListener);
 	}
 
-	// TODO Javadoc ;)
+	/**
+	 * Allow to update the window.
+	 */
 	public void updateWindow()
 	{
 		gameWindow.repaint();
 	}
 
-	// TODO Javadoc
+	/**
+	 * Close the window AND the application.
+	 */
 	public void closeWindowAndApp()
 	{
 		this.closeWindow();
@@ -28,6 +43,9 @@ public class SGPView
 		System.exit(0);
 	}
 
+	/**
+	 * Close the window WITHOUT closing the application.
+	 */
 	public void closeWindow()
 	{
 		gameWindow.dispose();

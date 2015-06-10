@@ -1,6 +1,11 @@
 package fr.iutvalence.ardechois.stealthgameproject.view;
 
-// TODO javadoc
+/**
+ * Enum for the actions.
+ * 
+ * @author kelemenn
+ *
+ */
 public enum ActionType {
 	PLAY,
 	EDITOR,

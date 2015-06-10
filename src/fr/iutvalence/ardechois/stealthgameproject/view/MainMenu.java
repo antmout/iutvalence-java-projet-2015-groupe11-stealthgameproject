@@ -10,15 +10,33 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+/**
+ * The application main menu.
+ * 
+ * @author vanbossm
+ *
+ */
 public class MainMenu extends JFrame {
+	/**
+	 * The height space between buttons.
+	 */
 	private static final int HEIGHT_SPACE_BETWEEN_BUTTONS = 70;
+	/**
+	 * The window height.
+	 */
 	public static final int WINDOW_HEIGHT = 670;
+	/**
+	 * The window width.
+	 */
 	public static final int WINDOW_WIDTH = 808;
 	/**
-	 * MainMenu for the game.
+	 * Serial version UID.
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** 
+	 * Default constructor.
+	 */
 	public MainMenu() {
 		this.setTitle("Stealth Game Project");
 		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
